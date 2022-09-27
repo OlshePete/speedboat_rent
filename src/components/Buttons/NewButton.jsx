@@ -1,9 +1,7 @@
-import React from 'react'
+import React from "react";
 
 function NewButton() {
-  return (
-    <div>NewButton</div>
-  )
+  return <div>OldButton</div>;
 }
 
-export default NewButton
+export default NewButton;
