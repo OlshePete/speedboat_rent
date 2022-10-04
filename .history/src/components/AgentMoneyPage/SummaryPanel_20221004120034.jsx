@@ -25,6 +25,11 @@ function SummaryPanel(props) {
   const labelArr = getLabel(index);
   return (
     <Box
+    // sx={{
+    //         minHeight:'100%',
+    //         display:'flex',
+    //         flexDirection:'column'
+    //       }}
       role="tabpanel"
       hidden={value !== index}
       id={`simple-tabpanel-${index}`}

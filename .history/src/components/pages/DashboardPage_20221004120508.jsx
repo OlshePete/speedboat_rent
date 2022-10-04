@@ -13,6 +13,8 @@ const AgentDashboard = () => {
             minWidth:'100%',
             justifyContent:"stretch",
             gap:1,
+        border:'1px solid black',
+        boxSizing:'content-box',
         }}
     >
        <AgentPage/>

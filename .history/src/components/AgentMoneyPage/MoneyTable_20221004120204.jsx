@@ -63,28 +63,6 @@ const data = [
     is_paid: true,
     is_exec: true,
   },
-  {
-    route: "Валаам + Шхеры",
-    order_date: "2022-01-04",
-    event_date: "2022-02-04",
-    spots: 5,
-    timespot: "17:00",
-    customer_phone: "+79216365123",
-    customer_name:"Сергей",
-    is_paid: true,
-    is_exec: true,
-  },
-  {
-    route: "Валаам + Шхеры",
-    order_date: "2022-01-04",
-    event_date: "2022-02-04",
-    spots: 5,
-    timespot: "17:00",
-    customer_phone: "+79216365123",
-    customer_name:"Сергей",
-    is_paid: true,
-    is_exec: true,
-  },
 ];
 export default function MoneyTable({ index = 3 }) {
   const dataar = new Date(data[0].order_date);
@@ -99,6 +77,7 @@ export default function MoneyTable({ index = 3 }) {
     <Box
       sx={{
         overflow: "scroll",
+        border:'1px solid black',
         boxSizing:'content-box',
         flexGrow:1,
       }}
@@ -106,8 +85,8 @@ export default function MoneyTable({ index = 3 }) {
       
     <Box
       sx={{
-        minHeight:'150px',
-        maxHeight:'50vh',
+        minHeight:'100%',
+        maxHeight:'100%',
         overflow: "auto",
         p: 1,
         display: "flex",

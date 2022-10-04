@@ -3,7 +3,6 @@ import React from "react";
 import MoneyTable from "./MoneyTable";
 
 const getLabel = (index) => {
-  
   switch (index) {
     case 0:
       return ["Всего заказов", "Всего заработано"];
@@ -25,6 +24,11 @@ function SummaryPanel(props) {
   const labelArr = getLabel(index);
   return (
     <Box
+    sx={{
+            minHeight:'100%',
+            display:'flex',
+            flexDirection:'column'
+          }}
       role="tabpanel"
       hidden={value !== index}
       id={`simple-tabpanel-${index}`}

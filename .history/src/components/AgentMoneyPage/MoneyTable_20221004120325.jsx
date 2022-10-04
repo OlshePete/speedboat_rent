@@ -99,15 +99,14 @@ export default function MoneyTable({ index = 3 }) {
     <Box
       sx={{
         overflow: "scroll",
+        border:'1px solid black',
         boxSizing:'content-box',
         flexGrow:1,
       }}
     >
       
-    <Box
+    {/* <Box
       sx={{
-        minHeight:'150px',
-        maxHeight:'50vh',
         overflow: "auto",
         p: 1,
         display: "flex",
@@ -198,7 +197,7 @@ export default function MoneyTable({ index = 3 }) {
           </Card>
         );
       })}
-    </Box>
+    </Box> */}
     </Box>
   );
   return (

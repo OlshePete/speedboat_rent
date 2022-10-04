@@ -99,6 +99,7 @@ export default function MoneyTable({ index = 3 }) {
     <Box
       sx={{
         overflow: "scroll",
+        border:'1px solid black',
         boxSizing:'content-box',
         flexGrow:1,
       }}
