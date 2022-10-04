@@ -101,10 +101,10 @@ function FormRoute({nextStep=()=>{}}) {
 
           </Box>
           {/* {JSON.stringify(formik.values)} */}
-          <Button color="primary" variant="contained" type="submit">
+          <Button color="success" variant="contained" type="submit">
             Готово
           </Button>
-          <Button color="error" variant="text" type="reset" onClick={(e)=>{formik.resetForm();handleClear() }}>
+          <Button color="error"  variant="contained" type="reset" onClick={(e)=>{formik.resetForm();handleClear() }}>
             Очистить
           </Button>
           {Object.keys(formik.errors).map((el, i) => {

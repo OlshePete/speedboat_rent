@@ -82,7 +82,7 @@ function NewOrderPage() {
                 {step.description}
                 <div>
                   {index !== 0 && (
-                    <Button onClick={handleBack} sx={{ mt: 1 }}>
+                    <Button onClick={handleBack} sx={{ mt: 1 }} variant="contained" color="error">
                       Изменить заказ
                     </Button>
                   )}

@@ -97,6 +97,7 @@ const FormEvent = ({ handleClickSubmit }) => {
         />
         <Button
           variant="contained"
+           color="success" 
           disabled={code !== "1234"}
           onClick={() => handleClickSubmit(phone, name, info)}
         >
@@ -106,6 +107,7 @@ const FormEvent = ({ handleClickSubmit }) => {
       <Collapse in={!check} timeout="auto" unmountOnExit>
         <Button
           variant="contained"
+           color="success" 
           disabled={!matchIsValidTel(phone)}
           onClick={handleButtonSubmit}
         >

@@ -1,6 +1,7 @@
 import { AppBar, Box, Toolbar, Typography } from "@mui/material";
 import React from "react";
 import Clock from "react-live-clock";
+import { useSelector } from "react-redux";
 
 function HeaderBar() {
     const now = new Date();
@@ -10,8 +11,16 @@ function HeaderBar() {
         year:'numeric'
     };
     const DateNow = new Intl.DateTimeFormat('ru', dateOptions)
+    const {
+      userRole,
+      userLogin
+    } = useSelector((state)=>state.speedboat)
+    const getRoleString = () =>{
+      if (userRole==="admin") return "Администратор"
+      if (userRole==="agent") return "Агент по продажам"
+    }
   return (
-    <AppBar>
+    <AppBar elevation={0}>
       <Toolbar>
         <Box
           sx={{
@@ -27,8 +36,8 @@ function HeaderBar() {
               flexDirection: "column",
             }}
           >
-            <Typography component={"span"}>Агент</Typography>
-            <Typography component={"span"}>Иванов В.В.</Typography>
+            <Typography component={"span"}>{userLogin}</Typography>
+            <Typography component={"span"}>{getRoleString()}</Typography>
           </Box>
           <Box
             sx={{

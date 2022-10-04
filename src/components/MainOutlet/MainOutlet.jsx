@@ -7,14 +7,14 @@ function MainOutlet() {
   return (
     <Paper
       sx={{
-        width: "100vw",
-        minHeight: "100vh",
+        minWidth: "100vw",
+        maxWidth: "100vw",
+        height: "calc(100vh - 56px)",
         backgroundColor: "#e9ecef",
         overflow: "hidden",
         display: "flex",
-        pt:"60px",
+        pt:"56px",
         justifyContent: "center",
-        // alignItems: "center",
       }}
     >
         <HeaderBar/>
