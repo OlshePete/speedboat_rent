@@ -24,19 +24,20 @@ const FormEvent = ({ handleClickSubmit }) => {
     }
   };
   async function getAllCustomers() {
-    const response = await fetch(`data/all`);
+    const response = await fetch(`/data/all`);
     const res = await response.json();
     return res;
   }
   async function getOneCustomer() {
-    const response = await fetch(`data/one/${info.numberValue}`);
+    const response = await fetch(`/data/one/${info.numberValue}`);
     const res = await response.json();
     return res;
   }
   async function newCustomer(body) {
-   const response = await fetch(`data/create`, {
+   const response = await fetch(`/data/create`, {
             method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
+            headers: { 'Content-Type': 'application/json',
+           },
             body: JSON.stringify(body)
         })
     const res = await response.json();
