@@ -1,4 +1,4 @@
-import { Box, Button, TextField } from "@mui/material";
+import { Box, Button, Container, TextField } from "@mui/material";
 import { useFormik } from "formik";
 import React from "react";
 import * as yup from "yup";
@@ -20,14 +20,15 @@ function SigninForm() {
       login: "",
       password: "",
     },
-    validationSchema:validationSchema,
+    validationSchema: validationSchema,
     onSubmit: (values) => {
       dispatch(authSignIn(values));
     },
   });
-console.log(formik.errors);
+  console.log(formik.errors);
   return (
-    <Box
+    <Container
+      maxWidth="sm"
       sx={{
         "& form": {
           display: "flex",
@@ -44,29 +45,39 @@ console.log(formik.errors);
           required
           id="login"
           name="login"
-          label="login"
+          label="Введите данные для авторизации"
           value={formik.values.login}
           onChange={formik.handleChange}
           error={formik.touched.login && Boolean(formik.errors.login)}
           helperText={formik.touched.login && formik.errors.login}
+          size="small"
         />
         <TextField
           fullWidth={false}
           required
           id="password"
           name="password"
-          label="Password"
+          label="Введите пароль"
           type="password"
           value={formik.values.password}
           onChange={formik.handleChange}
           error={formik.touched.password && Boolean(formik.errors.password)}
           helperText={formik.touched.password && formik.errors.password}
+          size="small"
         />
-        <Button onClick={() => {}} type="submit" variant="outlined">
+        <Button
+          sx={{
+            height: 48,
+          }}
+          fullWidth
+          onClick={() => {}}
+          type="submit"
+          variant="outlined"
+        >
           Login
         </Button>
       </form>
-    </Box>
+    </Container>
   );
 }
 

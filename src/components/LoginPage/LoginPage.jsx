@@ -8,34 +8,31 @@ function LoginPage() {
   const navigate = useNavigate();
   const [name, setName] = useState("");
   const [password, setPassword] = useState("");
-      const {
-      isAuth
-    } = useSelector((state)=>state.speedboat)
-    useEffect(() => {
-      if (isAuth) navigate('/dashboard')
-    }, [isAuth])
-    
+  const { isAuth } = useSelector((state) => state.speedboat);
+  useEffect(() => {
+    if (isAuth) navigate("/dashboard");
+  }, [isAuth]);
+
   return (
-      <Box
-        sx={{
-          display: "flex",
-          flexDirection: "column",
-          justifyContent: "center",
-          alignItems: "center",
-          gap: 2,
-          "& .MuiInputBase-root": {
-            fontSize: "24px",
-            // backgroundColor:'white'
-          },
-          "& .MuiButtonBase-root": {
-            backgroundColor: "white",
-          },
-        }}
-      >
-        <Typography variant="h3">LoginPage</Typography>
-        {
-        <SigninForm/>}
-      </Box>
+    <Box
+      sx={{
+        display: "flex",
+        flexDirection: "column",
+        justifyContent: "center",
+        alignItems: "center",
+        gap: 2,
+        "& .MuiInputBase-root": {
+          fontSize: "24px",
+          // backgroundColor:'white'
+        },
+        "& .MuiButtonBase-root": {
+          backgroundColor: "white",
+        },
+      }}
+    >
+      <Typography variant="h3">Вход:</Typography>
+      {<SigninForm />}
+    </Box>
   );
 }
 
