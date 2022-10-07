@@ -8,6 +8,7 @@ import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
 import { Box, Card, Grid, Tooltip, Typography } from "@mui/material";
 import PaidIcon from "@mui/icons-material/Paid";
+
 function createData(name, sum, route) {
   return { name, sum, route };
 }
@@ -26,7 +27,7 @@ const data = [
     spots: 3,
     timespot: "17:00",
     customer_phone: "+79216365123",
-    customer_name:"Иван",
+    customer_name: "Иван",
     is_paid: false,
     is_exec: false,
   },
@@ -37,7 +38,7 @@ const data = [
     spots: 2,
     timespot: "17:00",
     customer_phone: "+79216365123",
-    customer_name:"Мария",
+    customer_name: "Мария",
     is_paid: false,
     is_exec: false,
   },
@@ -48,7 +49,7 @@ const data = [
     spots: 1,
     timespot: "17:00",
     customer_phone: "+79216365123",
-    customer_name:"Антон",
+    customer_name: "Антон",
     is_paid: false,
     is_exec: false,
   },
@@ -59,7 +60,7 @@ const data = [
     spots: 5,
     timespot: "17:00",
     customer_phone: "+79216365123",
-    customer_name:"Сергей",
+    customer_name: "Сергей",
     is_paid: true,
     is_exec: true,
   },
@@ -70,7 +71,7 @@ const data = [
     spots: 5,
     timespot: "17:00",
     customer_phone: "+79216365123",
-    customer_name:"Сергей",
+    customer_name: "Сергей",
     is_paid: true,
     is_exec: true,
   },
@@ -81,7 +82,7 @@ const data = [
     spots: 5,
     timespot: "17:00",
     customer_phone: "+79216365123",
-    customer_name:"Сергей",
+    customer_name: "Сергей",
     is_paid: true,
     is_exec: true,
   },
@@ -99,106 +100,112 @@ export default function MoneyTable({ index = 3 }) {
     <Box
       sx={{
         overflow: "scroll",
-        boxSizing:'content-box',
-        flexGrow:1,
+        boxSizing: "content-box",
+        flexGrow: 1,
       }}
     >
-      
-    <Box
-      sx={{
-        minHeight:'150px',
-        maxHeight:'50vh',
-        overflow: "auto",
-        p: 1,
-        display: "flex",
-        flexDirection: "column",
-        gap: 1,
-        
-      }}
-    >
-      <Typography variant="caption" align="right">
-        {" "}
-        Список заказов
-      </Typography>
-      {data.map((el, index) => {
-        return (
-          <Card
-            sx={{
-              position: "relative",
-              minHeight: "80px",
-              maxHeight: "80px",
-              display: "flex",
-              minWidth: "100%",
-              justifyContent: "space-between",
-            }}
-          >
-            <Box
+      <Box
+        sx={{
+          minHeight: "150px",
+          maxHeight: "50vh",
+          overflow: "auto",
+          display: "flex",
+          flexDirection: "column",
+          gap: 0.5,
+          alignItems: "center",
+        }}
+      >
+        {data.map((el, index) => {
+          return (
+            <Card
+              key={"customer_card" + index}
               sx={{
-                bgcolor: "inherit",
+                position: "relative",
+                minHeight: "80px",
+                width: "95%",
                 display: "flex",
-                flexDirection:'row',
-                flexWrap:"wrap",
-                minWidth: "100%",
-                maxWidth: "100%",
-                // alignItems: "center",
-                // justifyContent: "space-between",
+                flexDirection: "row",
+                flexWrap: "wrap",
+                alignItems: "justify",
+                p: 1,
               }}
             >
               <Box
                 sx={{
-                  m:"8px",
-                  display: "flex",
-                  flexDirection: "row",
-                  alignItems: "flex-start",
-                  flexGrow: 1,
-                  justifyContent: "space-between",
-                }}
-              >
-                <Typography variant="route">
-                   {el.route}
-                </Typography>
-                <Typography variant="date">
-                  {DateNow.format(dataar)} - {el.timespot}
-                </Typography>
-              </Box>
-               <Box
-                sx={{
-                  flexGrow: 1,
-                  m:"8px",
-                  display: "flex",
-                  flexDirection: "row",
-                  alignItems: "start",
-                  justifyContent: "space-between",
-                }}
-              >
-               <Box
-                sx={{
+                  bgcolor: "inherit",
                   display: "flex",
                   flexDirection: "column",
-                  alignItems: "start",
-                  justifyContent: "center",
+                  flexWrap: "wrap",
+                  width: "100%",
+                  // alignItems: "center",
+                  // justifyContent: "space-between",
                 }}
-              ><Typography variant="customer_name"> {el.customer_name}</Typography>
-                <Typography variant="customer_phone"> {el.customer_phone}</Typography></Box>
-                
-               <Box
-                sx={{
-                  display: "flex",
-                  flexDirection: "column",
-                  alignItems: "flex-end",
-                  justifyContent: "center",
-                }}
-              ><Typography variant="timespot"> кол-во билетов - {el.spots} </Typography>
-                <Typography variant="customer_phone" sx={{
-                  color: !el.is_paid ? "#dbba2d" : "#99ce65"
-                }} > {el.is_paid ? "Оплачен" : "Ожидает оплаты"}</Typography></Box>
-                
+              >
+                <Box
+                  sx={{
+                    flexGrow: 1,
+                    display: "flex",
+                    flexDirection: "row",
+                    justifyContent: "space-between",
+                    flexWrap: "wrap",
+                  }}
+                >
+                  <Typography variant="route">{el.route}</Typography>
+                  <Typography variant="timespot">
+                    {DateNow.format(dataar)} - {el.timespot}
+                  </Typography>
+                </Box>
+                <Box
+                  sx={{
+                    flexGrow: 1,
+                    display: "flex",
+                    flexDirection: "row",
+                    justifyContent: "space-between",
+                    flexWrap: "wrap",
+                  }}
+                >
+                  <Box
+                    sx={{
+                      display: "flex",
+                      flexDirection: "column",
+                      alignItems: "start",
+                      justifyContent: "center",
+                    }}
+                  >
+                    <Typography variant="customer_name">
+                      {el.customer_name}
+                    </Typography>
+                    <Typography variant="customer_phone">
+                      {el.customer_phone}
+                    </Typography>
+                  </Box>
+
+                  <Box
+                    sx={{
+                      display: "flex",
+                      flexDirection: "column",
+                      alignItems: "flex-end",
+                      justifyContent: "center",
+                    }}
+                  >
+                    <Typography variant="spots">
+                      кол-во билетов - {el.spots}{" "}
+                    </Typography>
+                    <Typography
+                      variant="is_paid"
+                      sx={{
+                        color: !el.is_paid ? "#dbba2d" : "#99ce65",
+                      }}
+                    >
+                      {el.is_paid ? "Оплачен" : "Ожидает оплаты"}
+                    </Typography>
+                  </Box>
+                </Box>
               </Box>
-            </Box>
-          </Card>
-        );
-      })}
-    </Box>
+            </Card>
+          );
+        })}
+      </Box>
     </Box>
   );
   return (

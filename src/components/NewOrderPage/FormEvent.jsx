@@ -34,32 +34,31 @@ const FormEvent = ({ handleClickSubmit }) => {
     return res;
   }
   async function newCustomer(body) {
-   const response = await fetch(`/data/create`, {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json',
-           },
-            body: JSON.stringify(body)
-        })
+    const response = await fetch(`/data/create`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(body),
+    });
     const res = await response.json();
-    console.log("Customer already registered. user_id: ",res);
+    console.log("Customer already registered. user_id: ", res);
     return res;
   }
   const handleButtonSubmit = () => {
     setCheck(!check);
-    checkOrCreateCustomer()
+    checkOrCreateCustomer();
     console.log(`Отправили смс на номер ${phone}, код: 1234`);
     //  handleClickSubmit(phone, name, info)
   };
   const checkOrCreateCustomer = async () => {
     const tryFind = await getOneCustomer();
-    if (tryFind && tryFind.length>0) {
-      console.log("Customer already registered. user_id: ",tryFind[0].user_id);
+    if (tryFind && tryFind.length > 0) {
+      console.log("Customer already registered. user_id: ", tryFind[0].user_id);
     } else {
       const newId = await newCustomer({
-        "user_name": name || "не указано",
-        "user_phone": info.numberValue,
-        "order_id": 0
-      })
+        user_name: name || "не указано",
+        user_phone: info.numberValue,
+        order_id: 0,
+      });
     }
   };
   return (
@@ -98,17 +97,17 @@ const FormEvent = ({ handleClickSubmit }) => {
         />
         <Button
           variant="contained"
-           color="success" 
+          color="success"
           disabled={code !== "1234"}
           onClick={() => handleClickSubmit(phone, name, info)}
         >
-          Отправить заказ
+          Отправить
         </Button>
       </Collapse>
       <Collapse in={!check} timeout="auto" unmountOnExit>
         <Button
           variant="contained"
-           color="success" 
+          color="success"
           disabled={!matchIsValidTel(phone)}
           onClick={handleButtonSubmit}
         >

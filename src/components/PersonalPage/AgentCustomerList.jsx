@@ -18,7 +18,7 @@ export default function AgentCustomersList(props) {
               id="panel1a-header"
             >
               <Typography>
-                Номер: {el.phone} | Имя: {el.name}
+                Имя: {el.name} | Номер: {el.phone}
               </Typography>
             </AccordionSummary>
             <AccordionDetails>

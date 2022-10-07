@@ -15,13 +15,13 @@ function CustomDatePicker({ value, formik }) {
       }}
     >
       <Typography component={"span"} variant="subtitle2">
-        дата поездки
+        Дата поездки:
       </Typography>
 
       <ButtonGroup
         size="small"
         aria-label="fast set Date buttongroup"
-        variant="text"
+        sx={{ height: 40 }}
       >
         <Button
           key="today-button"

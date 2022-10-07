@@ -38,8 +38,10 @@ function ResultBlock({ currentOrder, currentCustomer, handleReset }) {
         <b>Кол-во:</b> {currentOrder.spots} человека
       </Typography>
       <Typography variant="body1">
-        <b>Клиент:</b> <a href="">{currentCustomer.name},{" "}
-        {currentCustomer.phone}</a>
+        <b>Клиент:</b>{" "}
+        <a href="">
+          {currentCustomer.name}, {currentCustomer.phone}
+        </a>
       </Typography>
       <Box
         sx={{
@@ -52,8 +54,8 @@ function ResultBlock({ currentOrder, currentCustomer, handleReset }) {
       >
         <QRCodeSVG value="https://reactjs.org/" />
       </Box>
-      <Button onClick={handleReset} sx={{ mt: 1, mr: 1 }}>
-        Reset
+      <Button variant="text" onClick={handleReset} sx={{ mt: 1, mr: 1 }}>
+        Закрыть
       </Button>
     </Paper>
   );

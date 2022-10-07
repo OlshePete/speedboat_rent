@@ -24,6 +24,9 @@ function PersonalPage() {
           <PersonalPageButton title="Добавить клиента" href="new-order" />
         </Box>
         <Box>
+          <Typography align="center" m={2} variant="h4">
+            Мои клиенты
+          </Typography>
           <AgentCustomersList customers={myCustomersList} />
         </Box>
       </Box>

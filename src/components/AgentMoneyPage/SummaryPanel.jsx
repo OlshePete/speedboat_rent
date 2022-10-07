@@ -3,7 +3,6 @@ import React from "react";
 import MoneyTable from "./MoneyTable";
 
 const getLabel = (index) => {
-  
   switch (index) {
     case 0:
       return ["Всего заказов", "Всего заработано"];
@@ -31,22 +30,28 @@ function SummaryPanel(props) {
       aria-labelledby={`simple-tab-${index}`}
       {...other}
     >
-      
-        <Box
-          sx={{
-            display: "flex",
-            justifyContent: "flex-end",
-            flexWrap:'wrap',
-            m:'0 1rem',
-            "&>*": {
-              width: "100%",
-            },
-          }}
-        >
-          <Typography as="div" align="right" minWidth={'100%'} variant="subtitle1">{labelArr[0]}: 5</Typography>
-          <Typography as="div" align="right" minWidth={'100%'} variant="subtitle1">{labelArr[1]}: 2000</Typography>
-        </Box>
-      <MoneyTable index={index}/>
+      <Box
+        sx={{
+          display: "flex",
+          justifyContent: "flex-end",
+          flexWrap: "wrap",
+          m: "0 1rem",
+          "&>*": {
+            width: "100%",
+          },
+        }}
+      >
+        <Typography as="div" align="left" minWidth={"100%"} variant="subtitle1">
+          {labelArr[0]}: 5
+        </Typography>
+        <Typography as="div" align="left" minWidth={"100%"} variant="subtitle1">
+          {labelArr[1]}: 2000
+        </Typography>
+        <Typography variant="h5" align="left">
+          Заказы:
+        </Typography>
+      </Box>
+      <MoneyTable index={index} />
     </Box>
   );
 }

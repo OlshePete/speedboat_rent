@@ -17,15 +17,41 @@ export default function CustomerList(props) {
               aria-controls="panel1a-content"
               id="panel1a-header"
             >
-              <Typography>
+              <Typography
+                sx={{
+                  fontSize: 20,
+                  fontWeight: 300,
+                }}
+              >
                 Номер: {el.phone} | Имя: {el.name}
               </Typography>
             </AccordionSummary>
             <AccordionDetails>
-              <Typography>Дата: {el.date}</Typography>
-              <Typography>Маршрут: {el.route}</Typography>
+              <Typography
+                sx={{
+                  fontSize: 16,
+                  fontWeight: 300,
+                }}
+              >
+                Дата: {el.date}
+              </Typography>
+              <Typography
+                sx={{
+                  fontSize: 16,
+                  fontWeight: 300,
+                }}
+              >
+                Маршрут: {el.route}
+              </Typography>
               <br />
-              <Typography>Комментарий: {el.desc}</Typography>
+              <Typography
+                sx={{
+                  fontSize: 16,
+                  fontWeight: 300,
+                }}
+              >
+                Комментарий: {el.desc}
+              </Typography>
             </AccordionDetails>
           </Accordion>
         ))}
