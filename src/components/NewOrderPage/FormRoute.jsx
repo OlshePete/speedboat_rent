@@ -65,7 +65,7 @@ function FormRoute({ nextStep = () => {} }) {
         }}
       >
         <CustomSelect
-          placeholder={"Выберите маршрут"}
+          placeholder={"Выберите маршрут:"}
           onChange={(value) => formik.setFieldValue("route", value.value)}
           value={formik.values.route}
           options={ROUTE_OPTIONS}

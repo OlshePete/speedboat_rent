@@ -10,13 +10,14 @@ function ButtonGroupSpot({ handleClick, value }) {
       aria-label="spot button group"
       className="button-group-spot"
       sx={{ height: 30 }}
+      color="secondary"
     >
       {[1, 2, 3, 4, 5, 6].map((el, index) => {
         return (
           <Button
             key={`button-${index}`}
             onClick={(e) => handleClick(e)}
-            variant={value === el ? "contained" : "outlined"}
+            variant="contained"
             id={String(el)}
           >
             {el}

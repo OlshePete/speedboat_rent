@@ -66,7 +66,7 @@ const FormEvent = ({ handleClickSubmit }) => {
       sx={{
         display: "flex",
         flexDirection: "column",
-        gap: 1,
+        gap: 2,
       }}
     >
       {/* <Button variant="contained" size="small" onClick={testOnClick}>
@@ -77,25 +77,31 @@ const FormEvent = ({ handleClickSubmit }) => {
         type="text"
         value={name}
         onChange={(e) => setName(e.target.value)}
-        placeholder="customer name"
+        label="Введите имя"
+        placeholder="Введите имя"
+        size="small"
       />
       <MuiTelInput
         disabled={check}
         defaultCountry="RU"
         // onlyCountries={['RU']}
-        label="номер телефона"
+        label="Введите номер мобильного телефона"
         value={phone}
         onChange={handleChangePhone}
+        size="small"
       />
       <Collapse in={check} timeout="auto" unmountOnExit>
         <TextField
+          fullWidth
           inputRef={codeButtonRef}
-          type="number"
           value={code}
           onChange={(e) => setCode(e.target.value)}
           placeholder="Код из СМС"
+          size="small"
+          sx={{ mb: 1 }}
         />
         <Button
+          fullWidth
           variant="contained"
           color="success"
           disabled={code !== "1234"}
@@ -110,6 +116,7 @@ const FormEvent = ({ handleClickSubmit }) => {
           color="success"
           disabled={!matchIsValidTel(phone)}
           onClick={handleButtonSubmit}
+          fullWidth
         >
           Отправить код
         </Button>

@@ -30,7 +30,7 @@ function LoginPage() {
         },
       }}
     >
-      <Typography variant="h3">Вход:</Typography>
+      <Typography variant="h4">Вход:</Typography>
       {<SigninForm />}
     </Box>
   );

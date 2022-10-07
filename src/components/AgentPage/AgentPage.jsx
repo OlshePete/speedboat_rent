@@ -57,6 +57,7 @@ function AgentPage() {
           flexDirection: "column",
           alignItems: "center",
           justifyContent: "center",
+          fontWeight: 600,
         }}
         variant="outlined"
         id="check-customer"

@@ -16,6 +16,7 @@ import FormRoute from "./FormRoute";
 import ResultBlock from "./ResultBlock";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import { useNavigate } from "react-router-dom";
+
 function NewOrderPage() {
   const navigate = useNavigate();
   const dispatch = useDispatch();
@@ -41,7 +42,7 @@ function NewOrderPage() {
   };
   const steps = [
     {
-      label: "Маршрут",
+      label: "Маршрут:",
       description: <FormRoute nextStep={handleNext} />,
     },
     {
@@ -65,8 +66,7 @@ function NewOrderPage() {
         }}
         onClick={() => navigate(-1)}
       >
-        {/* <ArrowBackIcon fontSize="small" /> */}
-        <Typography variant="caption">Вернуться на страницу агента</Typography>
+        <Typography fontWeight="600">Вернуться на страницу агента</Typography>
       </Button>
       <Stepper activeStep={activeStep} orientation="vertical">
         {steps.map((step, index) => (
@@ -88,6 +88,7 @@ function NewOrderPage() {
                 <div>
                   {index !== 0 && (
                     <Button
+                      fullWidth
                       onClick={handleBack}
                       sx={{ mt: 1 }}
                       variant="contained"

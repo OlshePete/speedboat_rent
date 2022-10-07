@@ -41,7 +41,6 @@ function SigninForm() {
     >
       <form onSubmit={formik.handleSubmit}>
         <TextField
-          fullWidth={false}
           required
           id="login"
           name="login"
@@ -53,7 +52,6 @@ function SigninForm() {
           size="small"
         />
         <TextField
-          fullWidth={false}
           required
           id="password"
           name="password"
@@ -65,16 +63,8 @@ function SigninForm() {
           helperText={formik.touched.password && formik.errors.password}
           size="small"
         />
-        <Button
-          sx={{
-            height: 48,
-          }}
-          fullWidth
-          onClick={() => {}}
-          type="submit"
-          variant="outlined"
-        >
-          Login
+        <Button fullWidth onClick={() => {}} type="submit">
+          Войти
         </Button>
       </form>
     </Container>

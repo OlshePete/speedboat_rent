@@ -33,9 +33,7 @@ function CheckPage() {
           onClick={() => navigate(-1)}
         >
           {/* <ArrowBackIcon fontSize="small" /> */}
-          <Typography variant="caption">
-            Вернуться на страницу агента
-          </Typography>
+          <Typography fontWeight="600">Вернуться на страницу агента</Typography>
         </Button>
         <TextField
           size="small"
@@ -61,7 +59,7 @@ function CheckPage() {
         >
           Поиск
         </Button>
-        {customers && <CustomerList customers={customerList} />}
+        <Box> {customers && <CustomerList customers={customerList} />}</Box>
       </Box>
     </Container>
   );

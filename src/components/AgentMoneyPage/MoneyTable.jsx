@@ -105,9 +105,6 @@ export default function MoneyTable({ index = 3 }) {
     >
       <Box
         sx={{
-          minHeight: "150px",
-          maxHeight: "50vh",
-          overflow: "auto",
           display: "flex",
           flexDirection: "column",
           gap: 0.5,
@@ -120,7 +117,6 @@ export default function MoneyTable({ index = 3 }) {
               key={"customer_card" + index}
               sx={{
                 position: "relative",
-                minHeight: "80px",
                 width: "95%",
                 display: "flex",
                 flexDirection: "row",
@@ -142,53 +138,47 @@ export default function MoneyTable({ index = 3 }) {
               >
                 <Box
                   sx={{
-                    flexGrow: 1,
                     display: "flex",
                     flexDirection: "row",
                     justifyContent: "space-between",
                     flexWrap: "wrap",
-                  }}
-                >
-                  <Typography variant="route">{el.route}</Typography>
-                  <Typography variant="timespot">
-                    {DateNow.format(dataar)} - {el.timespot}
-                  </Typography>
-                </Box>
-                <Box
-                  sx={{
-                    flexGrow: 1,
-                    display: "flex",
-                    flexDirection: "row",
-                    justifyContent: "space-between",
-                    flexWrap: "wrap",
+                    gap: 1,
+                    p: 1,
                   }}
                 >
                   <Box
                     sx={{
                       display: "flex",
                       flexDirection: "column",
-                      alignItems: "start",
                       justifyContent: "center",
+                      flexWrap: "wrap",
+                      gap: 1,
+                      alignItems: { md: "flex-start", xs: "left" },
                     }}
                   >
+                    <Typography variant="route">Маршрут: {el.route}</Typography>
                     <Typography variant="customer_name">
-                      {el.customer_name}
+                      Имя: {el.customer_name}
                     </Typography>
                     <Typography variant="customer_phone">
-                      {el.customer_phone}
+                      Номер: {el.customer_phone}
                     </Typography>
                   </Box>
-
                   <Box
                     sx={{
                       display: "flex",
                       flexDirection: "column",
-                      alignItems: "flex-end",
                       justifyContent: "center",
+                      alignItems: { md: "flex-end", xs: "left" },
+                      flexWrap: "wrap",
+                      gap: 1,
                     }}
                   >
+                    <Typography variant="timespot">
+                      Дата: {DateNow.format(dataar)} - {el.timespot}
+                    </Typography>
                     <Typography variant="spots">
-                      кол-во билетов - {el.spots}{" "}
+                      Кол-во билетов: {el.spots}{" "}
                     </Typography>
                     <Typography
                       variant="is_paid"
