@@ -20,11 +20,16 @@ function CustomDatePicker({ value, formik }) {
 
       <ButtonGroup
         size="small"
-        color="secondary"
         aria-label="fast set Date buttongroup"
         sx={{ height: 40, my: 1 }}
       >
         <Button
+          sx={{
+            color: "#efeeb6",
+
+            bgcolor: "#ba9e70",
+            ":hover": { bgcolor: "#ba9e70", opacity: 0.7 },
+          }}
           key="today-button"
           variant="contained"
           onClick={() => formik.setFieldValue("date", todayString)}
@@ -32,6 +37,12 @@ function CustomDatePicker({ value, formik }) {
           Сегодня
         </Button>
         <Button
+          sx={{
+            color: "#efeeb6",
+
+            bgcolor: "#ba9e70",
+            ":hover": { bgcolor: "#ba9e70", opacity: 0.7 },
+          }}
           variant="contained"
           key="tomorrow-button"
           onClick={() => {

@@ -15,6 +15,12 @@ function ButtonGroupSpot({ handleClick, value }) {
       {[1, 2, 3, 4, 5, 6].map((el, index) => {
         return (
           <Button
+            sx={{
+              color: "#efeeb6",
+
+              bgcolor: "#ba9e70",
+              ":hover": { bgcolor: "#ba9e70", opacity: 0.7 },
+            }}
             key={`button-${index}`}
             onClick={(e) => handleClick(e)}
             variant="contained"

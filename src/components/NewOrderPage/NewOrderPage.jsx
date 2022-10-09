@@ -16,6 +16,7 @@ import FormRoute from "./FormRoute";
 import ResultBlock from "./ResultBlock";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import { useNavigate } from "react-router-dom";
+import MainButton from "../Buttons/MainButton";
 
 function NewOrderPage() {
   const navigate = useNavigate();
@@ -51,23 +52,11 @@ function NewOrderPage() {
     },
   ];
   return (
-    <Container maxWidth="sm" sx={{ position: "relative", mt: 1 }}>
-      <Button
-        sx={{
-          minHeight: "40px",
-          width: "100%",
-          borderRadius: "8px",
-          bgcolor: "#f9ce14",
-          ":hover": { bgcolor: "lightblue" },
-          display: "flex",
-          alignItems: "center",
-          justifyContent: "center",
-          m: 1,
-        }}
+    <Container maxWidth="sm" sx={{ position: "relative", mt: 2 }}>
+      <MainButton
+        title="Вернуться на страницу агента"
         onClick={() => navigate(-1)}
-      >
-        <Typography fontWeight="600">Вернуться на страницу агента</Typography>
-      </Button>
+      />
       <Stepper activeStep={activeStep} orientation="vertical">
         {steps.map((step, index) => (
           <Step key={step.label}>
@@ -85,19 +74,16 @@ function NewOrderPage() {
             <StepContent>
               <Box sx={{ mb: 2 }}>
                 {step.description}
-                <div>
+                <Box sx={{ mt: 2 }}>
                   {index !== 0 && (
-                    <Button
-                      fullWidth
+                    <MainButton
+                      title="Изменить заказ"
                       onClick={handleBack}
-                      sx={{ mt: 1 }}
-                      variant="contained"
-                      color="error"
-                    >
-                      Изменить заказ
-                    </Button>
+                      bg="#E83100"
+                      hoverbg="#FF6933"
+                    />
                   )}
-                </div>
+                </Box>
               </Box>
             </StepContent>
           </Step>

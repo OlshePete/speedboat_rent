@@ -4,6 +4,7 @@ import React from "react";
 import * as yup from "yup";
 import { useDispatch } from "react-redux";
 import { authSignIn } from "../../reducers/appReducer";
+import MainButton from "../Buttons/MainButton";
 
 const validationSchema = yup.object({
   login: yup.string("Введите имя пользователя").required("Обязательное поле"),
@@ -63,9 +64,7 @@ function SigninForm() {
           helperText={formik.touched.password && formik.errors.password}
           size="small"
         />
-        <Button fullWidth onClick={() => {}} type="submit">
-          Войти
-        </Button>
+        <MainButton title="Войти" type="submit" color="#469597" />
       </form>
     </Container>
   );

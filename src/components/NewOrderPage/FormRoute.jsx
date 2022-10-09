@@ -8,6 +8,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { setCurrentOrder } from "../../reducers/appReducer";
 import { ROUTE_OPTIONS, TIMESPOTS_OPTIONS } from "../../data/routedata";
 import ButtonGroupSpot from "./ButtonGroupSpot";
+import MainButton from "../Buttons/MainButton";
 
 const validationSchema = yup.object({
   route: yup.string("Выберите маршрут").min(2).required("Маршрут не выбран"),
@@ -93,20 +94,17 @@ function FormRoute({ nextStep = () => {} }) {
           />
         </Box>
         {/* {JSON.stringify(formik.values)} */}
-        <Button color="success" variant="contained" type="submit">
-          Готово
-        </Button>
-        <Button
-          color="error"
-          variant="contained"
+        <MainButton title="Готово" type="submit" />
+        <MainButton
+          title="Очистить"
           type="reset"
+          bg="#E83100"
+          hoverbg="#FF6933"
           onClick={(e) => {
             formik.resetForm();
             handleClear();
           }}
-        >
-          Очистить
-        </Button>
+        />
         {Object.keys(formik.errors).map((el, i) => {
           return (
             <div className="error MuiFormHelperText-root Mui-error MuiFormHelperText-sizeSmall MuiFormHelperText-contained css-k4qjio-MuiFormHelperText-root">

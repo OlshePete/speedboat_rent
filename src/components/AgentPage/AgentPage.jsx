@@ -1,6 +1,7 @@
-import { Box, Button, Paper } from "@mui/material";
+import { Box, Button, ButtonGroup, Paper } from "@mui/material";
 import React from "react";
 import { useNavigate } from "react-router-dom";
+import MainButton from "../Buttons/MainButton";
 
 function AgentPage() {
   const navigate = useNavigate();
@@ -11,7 +12,6 @@ function AgentPage() {
     <Box
       sx={{
         // m: "auto 0",
-        mt: 2,
         display: "flex",
         flexDirection: "row",
         flexWrap: "wrap",
@@ -21,49 +21,16 @@ function AgentPage() {
         width: "100%",
       }}
     >
-      <Button
-        onClick={handleClick}
+      <ButtonGroup
+        fullWidth
         sx={{
-          minHeight: "40px",
-          maxHeight: "40px",
-          minWidth: "48%",
-          maxWidth: "48%",
-          borderRadius: "8px",
-          bgcolor: "#f9ce14",
-          color: "white",
-          display: "flex",
-          flexGrow: 1,
-          flexDirection: "column",
-          alignItems: "center",
-          justifyContent: "center",
+          height: "40px",
+          my: 2,
         }}
-        variant="outlined"
-        id="new-order"
       >
-        Новый заказ
-      </Button>
-      <Button
-        onClick={handleClick}
-        sx={{
-          minHeight: "40px",
-          maxHeight: "40px",
-          minWidth: "48%",
-          maxWidth: "48%",
-          borderRadius: "8px",
-          bgcolor: "#8d4de9",
-          color: "white",
-          display: "flex",
-          flexGrow: 1,
-          flexDirection: "column",
-          alignItems: "center",
-          justifyContent: "center",
-          fontWeight: 600,
-        }}
-        variant="outlined"
-        id="check-customer"
-      >
-        Проверить клиента
-      </Button>
+        <MainButton title="Новый заказ" id="new-order" />
+        <MainButton title="Проверить клиента" id="check-customer" />
+      </ButtonGroup>
     </Box>
   );
 }

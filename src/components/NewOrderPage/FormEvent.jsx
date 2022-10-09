@@ -1,6 +1,7 @@
 import { Box, Button, Collapse, TextField } from "@mui/material";
 import { MuiTelInput, matchIsValidTel } from "mui-tel-input";
 import { useEffect, useRef, useState } from "react";
+import MainButton from "../Buttons/MainButton";
 
 const FormEvent = ({ handleClickSubmit }) => {
   const codeButtonRef = useRef(null);
@@ -98,28 +99,21 @@ const FormEvent = ({ handleClickSubmit }) => {
           onChange={(e) => setCode(e.target.value)}
           placeholder="Код из СМС"
           size="small"
-          sx={{ mb: 1 }}
+          sx={{ mb: 2 }}
         />
-        <Button
-          fullWidth
-          variant="contained"
-          color="success"
-          disabled={code !== "1234"}
+        <MainButton
+          title="Отправить"
           onClick={() => handleClickSubmit(phone, name, info)}
-        >
-          Отправить
-        </Button>
+          disabled={code !== "1234"}
+        />
       </Collapse>
       <Collapse in={!check} timeout="auto" unmountOnExit>
-        <Button
-          variant="contained"
-          color="success"
+        <MainButton
           disabled={!matchIsValidTel(phone)}
+          title="Отправить код"
+          type="submit"
           onClick={handleButtonSubmit}
-          fullWidth
-        >
-          Отправить код
-        </Button>
+        />
       </Collapse>
     </Box>
   );

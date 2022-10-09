@@ -3,13 +3,14 @@ import { Box, Button, Container, TextField, Typography } from "@mui/material";
 import CustomerList from "./CustomerList";
 import { customers } from "../../data/customersData";
 import { useNavigate } from "react-router-dom";
+import MainButton from "../Buttons/MainButton";
 
 function CheckPage() {
   const navigate = useNavigate();
   const [customerList] = useState(customers);
 
   return (
-    <Container maxWidth="sm" sx={{ mt: 1 }}>
+    <Container maxWidth="sm" sx={{ mt: 2 }}>
       <Box
         sx={{
           display: "flex",
@@ -18,23 +19,10 @@ function CheckPage() {
           alignItems: "center",
         }}
       >
-        <Button
-          sx={{
-            minHeight: "40px",
-            width: "100%",
-            borderRadius: "8px",
-            bgcolor: "#f9ce14",
-            ":hover": { bgcolor: "lightblue" },
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "center",
-            m: 1,
-          }}
+        <MainButton
+          title="Вернуться на страницу агента"
           onClick={() => navigate(-1)}
-        >
-          {/* <ArrowBackIcon fontSize="small" /> */}
-          <Typography fontWeight="600">Вернуться на страницу агента</Typography>
-        </Button>
+        />
         <TextField
           size="small"
           placeholder="Введите фамилию, либо номер телефона клиента:"
@@ -44,22 +32,10 @@ function CheckPage() {
             borderRadius: "8px",
           }}
         />
-        <Button
-          sx={{
-            minHeight: "40px",
-            width: "100%",
-            borderRadius: "8px",
-            bgcolor: "lightgreen",
-            ":hover": { bgcolor: "lightpink" },
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "center",
-            m: 1,
-          }}
-        >
-          Поиск
-        </Button>
-        <Box> {customers && <CustomerList customers={customerList} />}</Box>
+        <MainButton title="Поиск" fz="22px" />
+        <Box sx={{ my: 2 }}>
+          {customers && <CustomerList customers={customerList} />}
+        </Box>
       </Box>
     </Container>
   );

@@ -2,6 +2,7 @@ import { Box, Button, Divider, Paper, Typography } from "@mui/material";
 import React from "react";
 import { ROUTE_OPTIONS, TIMESPOTS_OPTIONS } from "../../data/routedata";
 import { QRCodeSVG } from "qrcode.react";
+import MainButton from "../Buttons/MainButton";
 
 function ResultBlock({ currentOrder, currentCustomer, handleReset }) {
   return (
@@ -12,7 +13,7 @@ function ResultBlock({ currentOrder, currentCustomer, handleReset }) {
         margin: "0 auto",
         p: 3,
         borderRadius: "8px",
-        maxWidth: "300px",
+        maxWidth: "240px",
       }}
     >
       <Box
@@ -20,32 +21,36 @@ function ResultBlock({ currentOrder, currentCustomer, handleReset }) {
           display: "flex",
           flexDirection: "row",
           justifyContent: "space-between",
+          alignItems: "center",
           mb: 1,
         }}
       >
         <Box>
-          <Typography variant="h6" color="red">
-            Заказ № 001-2022
+          <Typography variant="body1" color="red">
+            Заказ №: <br /> 001-2022
           </Typography>
           <Typography variant="subtitle2" color="green">
             Успешно создан
           </Typography>
         </Box>
         <Button
-          size="small"
           variant="contained"
           color="warning"
           onClick={handleReset}
           sx={{
-            mt: 1,
-            mr: 1,
             fontWeight: 600,
+            height: "100%",
           }}
         >
           Закрыть
         </Button>
       </Box>
-      <Divider color="green" />
+      <Divider
+        color="green"
+        sx={{
+          my: 1,
+        }}
+      />
       <Typography variant="body1">
         <b>Дата:</b> {currentOrder.date}
       </Typography>
@@ -71,11 +76,12 @@ function ResultBlock({ currentOrder, currentCustomer, handleReset }) {
         <b>Кол-во:</b> {currentOrder.spots} человека
       </Typography>
       <Typography variant="body1">
-        <b>Клиент:</b>
+        <b>Клиент:</b> <br />
         <a href="">{currentCustomer.name},</a>
       </Typography>
       <Typography variant="body1">
-        <b>Номер клиента:</b> <a href="">{currentCustomer.phone}</a>{" "}
+        <b>Номер клиента:</b> <br />
+        <a href="">{currentCustomer.phone}</a>{" "}
       </Typography>
       <Box
         sx={{
