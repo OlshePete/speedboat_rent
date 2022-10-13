@@ -11,13 +11,13 @@ function AdminDashboard() {
   const [agentsList] = useState(agents);
   const [showAgentList, setShowAgentList] = useState(true);
   const agentHandler = () => {
-    // setShowCustomerList(false);
+    setShowCustomerList(false);
     setShowAgentList(true);
   };
   const [customersList] = useState(customers);
   const [showCustomerList, setShowCustomerList] = useState(false);
   const customerHandler = () => {
-    // setShowAgentList(false);
+    setShowAgentList(false);
     setShowCustomerList(true);
   };
 
@@ -27,15 +27,15 @@ function AdminDashboard() {
         sx={{
           display: "flex",
           flexDirection: "column",
-          justifyContent: "center",
+          alignItems: "center",
           gap: 1,
         }}
       >
-        <ButtonGroup orientation="horizontal">
+        <ButtonGroup sx={{ width: "100%" }} orientation="horizontal">
           <MainButton title="Новый агент" />
           <MainButton title="Новый заказ" id="new-order" />
         </ButtonGroup>{" "}
-        <ButtonGroup orientation="horizontal">
+        <ButtonGroup sx={{ width: "100%" }} orientation="horizontal">
           <MainButton title="Список агентов" onClick={agentHandler} />
           <MainButton title="Список заказов" onClick={customerHandler} />
         </ButtonGroup>
