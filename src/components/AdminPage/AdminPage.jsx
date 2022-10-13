@@ -41,20 +41,20 @@ function AdminDashboard() {
         </ButtonGroup>
       </Box>
       <Box sx={{ mt: 2 }}>
-        {showCustomerList === true && (
-          <Box>
-            <Typography sx={{ my: 1 }} variant="h4" textAlign="center">
-              Клиенты
-            </Typography>
-            <CustomerList customers={customersList} />
-          </Box>
-        )}
         {showAgentList === true && (
           <Box>
             <Typography sx={{ my: 1 }} variant="h4" textAlign="center">
               Агенты
             </Typography>
             <AgentsList agents={agentsList} />
+          </Box>
+        )}
+        {showCustomerList === true && (
+          <Box>
+            <Typography sx={{ my: 1 }} variant="h4" textAlign="center">
+              Заказы
+            </Typography>
+            <CustomerList customers={customersList} />
           </Box>
         )}
       </Box>
