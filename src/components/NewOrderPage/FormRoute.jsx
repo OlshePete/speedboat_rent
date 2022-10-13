@@ -2,13 +2,14 @@ import { Box, Button, ButtonGroup, Typography } from "@mui/material";
 import { useFormik } from "formik";
 import * as yup from "yup";
 import React from "react";
-import CustomSelect from "../CustomSelect/CustomSelect";
-import CustomDatePicker from "../CustomDatePicker/CustomDatePicker";
+
 import { useDispatch, useSelector } from "react-redux";
 import { setCurrentOrder } from "../../reducers/appReducer";
 import { ROUTE_OPTIONS, TIMESPOTS_OPTIONS } from "../../data/routedata";
 import ButtonGroupSpot from "./ButtonGroupSpot";
 import MainButton from "../Buttons/MainButton";
+import CustomDatePicker from "./CustomDatePicker";
+import CustomSelect from "./CustomSelect";
 
 const validationSchema = yup.object({
   route: yup.string("Выберите маршрут").min(2).required("Маршрут не выбран"),
@@ -71,7 +72,6 @@ function FormRoute({ nextStep = () => {} }) {
           value={formik.values.route}
           options={ROUTE_OPTIONS}
         />
-
         <CustomDatePicker value={formik.values.date} formik={formik} />
         <CustomSelect
           placeholder={"Время отправления"}

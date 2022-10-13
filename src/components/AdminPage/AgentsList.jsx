@@ -2,15 +2,20 @@ import * as React from "react";
 import Typography from "@mui/material/Typography";
 import { Box, Card } from "@mui/material";
 
-export default function CustomerList(props) {
+export default function AgentsList(props) {
   return (
-    <Box sx={{}}>
-      {props.customers &&
-        props.customers.map((el, i) => (
+    <Box
+      sx={{
+        width: "100%",
+      }}
+    >
+      {props.agents &&
+        props.agents.map((el, i) => (
           <Card
             key={"checkcustomer_card" + i}
             sx={{
               position: "relative",
+              width: "100%",
               display: "flex",
               flexDirection: "row",
               flexWrap: "wrap",
@@ -46,7 +51,6 @@ export default function CustomerList(props) {
                     alignItems: { md: "flex-start", xs: "left" },
                   }}
                 >
-                  <Typography variant="route">Маршрут: {el.route}</Typography>
                   <Typography variant="customer_name">
                     Имя: {el.name}
                   </Typography>
@@ -65,17 +69,11 @@ export default function CustomerList(props) {
                     mt: { xs: 1, sm: 0 },
                   }}
                 >
-                  <Typography variant="timespot">Дата: {el.date}</Typography>
                   <Typography variant="spots">
-                    Кол-во билетов: {el.spots}
+                    Заработано: {el.agentMoney}
                   </Typography>
-                  <Typography
-                    variant="is_paid"
-                    sx={{
-                      color: !el.is_paid ? "#dbba2d" : "#99ce65",
-                    }}
-                  >
-                    {el.is_paid ? "Оплачен" : "Ожидает оплаты"}
+                  <Typography variant="timespot">
+                    Дата регистрации: {el.registrationDate}
                   </Typography>
                 </Box>
               </Box>

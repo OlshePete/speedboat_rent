@@ -1,14 +1,11 @@
 import { createTheme, ThemeProvider } from "@mui/material";
 import { Route, Routes } from "react-router-dom";
 import "./App.css";
-import AgentMoney from "./components/AgentMoneyPage/AgentMoney";
-import AgentPage from "./components/AgentPage/AgentPage";
 import CheckPage from "./components/CheckPage/CheckPage";
 import LoginPage from "./components/LoginPage/LoginPage";
 import MainOutlet from "./components/MainOutlet/MainOutlet";
 import NewOrderPage from "./components/NewOrderPage/NewOrderPage";
 import DashboardPage from "./components/pages/DashboardPage";
-import PersonalPage from "./components/PersonalPage/PersonalPage";
 import PrivateRoute from "./hoc/PrivateRoute";
 
 const theme = createTheme({
@@ -134,7 +131,6 @@ const theme = createTheme({
           props: { variant: "filled" },
           style: {
             textTransform: "uppercase",
-            borderRadius: 0,
             fontSize: "18px",
             backgroundColor: "inherit",
             border: "1px solid rgba(135,2,3,1)",
@@ -155,7 +151,6 @@ const theme = createTheme({
           props: { variant: "filled" },
           style: {
             textTransform: "uppercase",
-            borderRadius: 0,
             fontSize: "18px",
             backgroundColor: "inherit",
             border: "1px solid rgba(135,2,3,1)",
@@ -204,14 +199,7 @@ function App() {
               </PrivateRoute>
             }
           />
-          <Route
-            path="dashboard/personal-account"
-            element={
-              <PrivateRoute>
-                <PersonalPage />
-              </PrivateRoute>
-            }
-          />
+
           {/* <Route exac path="/agent" element={<AgentPage />} />
         <Route exac path="/agent-money" element={<AgentMoney />} /> */}
         </Route>

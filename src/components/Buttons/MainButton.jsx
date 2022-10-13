@@ -23,7 +23,11 @@ function MainButton(props) {
         color: props.color || "#efeeb6",
         textTransform: "uppercase",
         fontWeight: 600,
-        ":hover": { bgcolor: props.hoverbg || "#5BA199", color: "#efeeb6" },
+        ":hover": {
+          border: "none",
+          bgcolor: props.hoverbg || "#5BA199",
+          color: "#efeeb6",
+        },
       }}
       id={props.id}
       onClick={props.onClick || handleClick}

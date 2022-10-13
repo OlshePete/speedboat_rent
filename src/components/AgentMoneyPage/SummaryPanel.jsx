@@ -33,12 +33,9 @@ function SummaryPanel(props) {
       <Box
         sx={{
           display: "flex",
-          justifyContent: "flex-end",
+          flexDirection: "column",
           flexWrap: "wrap",
-          m: "0 1rem",
-          "&>*": {
-            width: "100%",
-          },
+          m: 1,
         }}
       >
         <Typography as="div" align="left" minWidth={"100%"} variant="subtitle1">

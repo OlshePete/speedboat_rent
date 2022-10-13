@@ -29,7 +29,7 @@ function AgentPage() {
         }}
       >
         <MainButton title="Новый заказ" id="new-order" />
-        <MainButton title="Проверить клиента" id="check-customer" />
+        <MainButton title="Найти заказ" id="check-customer" />
       </ButtonGroup>
     </Box>
   );

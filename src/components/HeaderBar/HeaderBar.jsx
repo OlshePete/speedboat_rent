@@ -16,6 +16,7 @@ function HeaderBar() {
     if (userRole === "admin") return "Администратор";
     if (userRole === "agent") return "Агент по продажам";
   };
+  const style = { text: { fontSize: { xs: 14, sm: 18 } } };
   return (
     <AppBar
       sx={{
@@ -39,10 +40,15 @@ function HeaderBar() {
               sx={{
                 display: "flex",
                 flexDirection: "column",
+                alignItems: "flex-start",
               }}
             >
-              <Typography component={"span"}>{userLogin}</Typography>
-              <Typography component={"span"}>{getRoleString()}</Typography>
+              <Typography sx={style.text} component={"span"}>
+                {userLogin}
+              </Typography>
+              <Typography sx={style.text} component={"span"}>
+                {getRoleString()}
+              </Typography>
             </Box>
             <Box
               sx={{
@@ -51,8 +57,11 @@ function HeaderBar() {
                 alignItems: "flex-end",
               }}
             >
-              {DateNow.format(now)}
-              <Clock format={"HH:mm:ss"} ticking={true} />
+              <Typography sx={style.text}>{DateNow.format(now)}</Typography>
+              <Typography sx={style.text}>
+                {" "}
+                <Clock format={"HH:mm:ss"} ticking={true} />
+              </Typography>
             </Box>
           </Box>
         </Toolbar>

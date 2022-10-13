@@ -1,6 +1,5 @@
 import {
   Box,
-  Button,
   Typography,
   StepContent,
   Stepper,
@@ -53,10 +52,7 @@ function NewOrderPage() {
   ];
   return (
     <Container maxWidth="sm" sx={{ position: "relative", mt: 2 }}>
-      <MainButton
-        title="Вернуться на страницу агента"
-        onClick={() => navigate(-1)}
-      />
+      <MainButton title="Назад" onClick={() => navigate(-1)} />
       <Stepper activeStep={activeStep} orientation="vertical">
         {steps.map((step, index) => (
           <Step key={step.label}>

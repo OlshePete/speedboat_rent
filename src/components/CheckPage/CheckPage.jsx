@@ -7,7 +7,7 @@ import MainButton from "../Buttons/MainButton";
 
 function CheckPage() {
   const navigate = useNavigate();
-  const [customerList] = useState(customers);
+  const [customerList, setCustomerList] = useState(customers);
 
   return (
     <Container maxWidth="sm" sx={{ mt: 2 }}>
@@ -19,10 +19,7 @@ function CheckPage() {
           alignItems: "center",
         }}
       >
-        <MainButton
-          title="Вернуться на страницу агента"
-          onClick={() => navigate(-1)}
-        />
+        <MainButton title="Назад" onClick={() => navigate(-1)} />
         <TextField
           size="small"
           placeholder="Введите фамилию, либо номер телефона клиента:"
@@ -33,7 +30,7 @@ function CheckPage() {
           }}
         />
         <MainButton title="Поиск" fz="22px" />
-        <Box sx={{ my: 2 }}>
+        <Box sx={{ my: 2, width: "100%" }}>
           {customers && <CustomerList customers={customerList} />}
         </Box>
       </Box>
