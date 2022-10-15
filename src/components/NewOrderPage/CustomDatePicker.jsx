@@ -15,21 +15,35 @@ function CustomDatePicker({ value, formik }) {
       }}
     >
       <Typography component={"span"} variant="subtitle2">
-        дата поездки
+        Дата поездки:
       </Typography>
 
       <ButtonGroup
         size="small"
         aria-label="fast set Date buttongroup"
-        variant="text"
+        sx={{ height: 40, my: 1 }}
       >
         <Button
+          sx={{
+            color: "#efeeb6",
+
+            bgcolor: "#ba9e70",
+            ":hover": { bgcolor: "#ba9e70", opacity: 0.7 },
+          }}
           key="today-button"
+          variant="contained"
           onClick={() => formik.setFieldValue("date", todayString)}
         >
           Сегодня
         </Button>
         <Button
+          sx={{
+            color: "#efeeb6",
+
+            bgcolor: "#ba9e70",
+            ":hover": { bgcolor: "#ba9e70", opacity: 0.7 },
+          }}
+          variant="contained"
           key="tomorrow-button"
           onClick={() => {
             formik.setFieldValue("date", tommorowString);

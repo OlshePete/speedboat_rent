@@ -2,38 +2,37 @@ import React, { useState } from "react";
 import { Box, Button, Container, TextField, Typography } from "@mui/material";
 import CustomerList from "./CustomerList";
 import { customers } from "../../data/customersData";
+import { useNavigate } from "react-router-dom";
+import MainButton from "../Buttons/MainButton";
 
 function CheckPage() {
-  const [customerList] = useState(customers);
+  const navigate = useNavigate();
+  const [customerList, setCustomerList] = useState(customers);
 
   return (
-    <Container maxWidth="fluid" sx={{ mt: 2 }}>
+    <Container maxWidth="sm" sx={{ mt: 2 }}>
       <Box
         sx={{
           display: "flex",
           flexDirection: "column",
           justifyContent: "center",
-          alignItems: "left",
+          alignItems: "center",
         }}
       >
-        <Typography>Введите фамилию либо номер телефона клиента</Typography>
+        <MainButton title="Назад" onClick={() => navigate(-1)} />
         <TextField
           size="small"
+          placeholder="Введите фамилию, либо номер телефона клиента:"
           sx={{
             width: "100%",
             my: 2,
+            borderRadius: "8px",
           }}
         />
-        <Button
-          sx={{
-            width: "100%",
-            mb: 2,
-          }}
-          variant="outlined"
-        >
-          Поиск
-        </Button>
-        {customers && <CustomerList customers={customerList} />}
+        <MainButton title="Поиск" fz="22px" />
+        <Box sx={{ my: 2, width: "100%" }}>
+          {customers && <CustomerList customers={customerList} />}
+        </Box>
       </Box>
     </Container>
   );

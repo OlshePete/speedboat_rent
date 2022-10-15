@@ -1,18 +1,15 @@
-import {
-  Box,
-  Button,
-  ButtonGroup,
-  Typography,
-} from "@mui/material";
+import { Box, Button, ButtonGroup, Typography } from "@mui/material";
 import { useFormik } from "formik";
 import * as yup from "yup";
 import React from "react";
-import CustomSelect from "../CustomSelect/CustomSelect";
-import CustomDatePicker from "../CustomDatePicker/CustomDatePicker";
+
 import { useDispatch, useSelector } from "react-redux";
 import { setCurrentOrder } from "../../reducers/appReducer";
 import { ROUTE_OPTIONS, TIMESPOTS_OPTIONS } from "../../data/routedata";
 import ButtonGroupSpot from "./ButtonGroupSpot";
+import MainButton from "../Buttons/MainButton";
+import CustomDatePicker from "./CustomDatePicker";
+import CustomSelect from "./CustomSelect";
 
 const validationSchema = yup.object({
   route: yup.string("Выберите маршрут").min(2).required("Маршрут не выбран"),
@@ -25,98 +22,98 @@ const validationSchema = yup.object({
     .moreThan(0, "Время отправления не выбрано"),
 });
 
-function FormRoute({nextStep=()=>{}}) {
-  const {currentOrder} = useSelector((state) => state.speedboat)
+function FormRoute({ nextStep = () => {} }) {
+  const { currentOrder } = useSelector((state) => state.speedboat);
   const dispatch = useDispatch();
   let initialValues = {
-      route: "",
-      date: "",
-      spots: 0,
-      timespot: 0, 
-  }
-  if (!!currentOrder.route) initialValues={...currentOrder}
+    route: "",
+    date: "",
+    spots: 0,
+    timespot: 0,
+  };
+  if (!!currentOrder.route) initialValues = { ...currentOrder };
   const formik = useFormik({
     initialValues: {
-      ...initialValues
+      ...initialValues,
     },
     validationSchema: validationSchema,
     onSubmit: (values) => {
-      dispatch(setCurrentOrder({...values}))
+      dispatch(setCurrentOrder({ ...values }));
       console.log(values);
-      nextStep()
+      nextStep();
     },
   });
   const handleChangeSpot = (e) => {
-    formik.setFieldValue("spots", +e.target.id)
-  }
+    formik.setFieldValue("spots", +e.target.id);
+  };
   const handleClear = () => {
-    dispatch(setCurrentOrder({
-      route: "",
-      date: "",
-      spots: 0,
-      timespot: 0, 
-  }))
-  }
+    dispatch(
+      setCurrentOrder({
+        route: "",
+        date: "",
+        spots: 0,
+        timespot: 0,
+      })
+    );
+  };
   return (
-    <div>
-      <form onSubmit={formik.handleSubmit}>
+    <form onSubmit={formik.handleSubmit}>
+      <Box
+        sx={{
+          display: "flex",
+          flexDirection: "column",
+          gap: "12px",
+          width: "100%",
+        }}
+      >
+        <CustomSelect
+          placeholder={"Выберите маршрут:"}
+          onChange={(value) => formik.setFieldValue("route", value.value)}
+          value={formik.values.route}
+          options={ROUTE_OPTIONS}
+        />
+        <CustomDatePicker value={formik.values.date} formik={formik} />
+        <CustomSelect
+          placeholder={"Время отправления"}
+          onChange={(value) => formik.setFieldValue("timespot", value.value)}
+          value={formik.values.timespot}
+          options={TIMESPOTS_OPTIONS}
+        />
         <Box
           sx={{
             display: "flex",
             flexDirection: "column",
-            gap: "12px",
-            minWidth:'100%',
-            maxWidth:'100%',
           }}
         >
-          <CustomSelect
-            placeholder={"Выберите маршрут"}
-            onChange={(value) => formik.setFieldValue("route", value.value)}
-            value={formik.values.route}
-            options={ROUTE_OPTIONS}
+          <Typography component={"span"} variant="subtitle2">
+            Количество мест: {String(formik.values.spots)}
+          </Typography>
+          <ButtonGroupSpot
+            handleClick={handleChangeSpot}
+            value={formik.values.spots}
           />
-         
-          <CustomDatePicker value={formik.values.date} formik={formik} />
-            <CustomSelect
-              placeholder={"Время отправления"}
-              onChange={(value) =>
-                formik.setFieldValue("timespot", value.value)
-              }
-              value={formik.values.timespot}
-              options={TIMESPOTS_OPTIONS}
-            />
-          <Box
-            sx={{
-              display: "flex",
-              flexDirection: "column",
-            }}
-          >
-            <Typography component={"span"} variant="subtitle2">
-              количество мест - {String(formik.values.spots)}
-            </Typography>
-            <ButtonGroupSpot
-              handleClick={handleChangeSpot}
-              value={formik.values.spots}
-            />
-
-          </Box>
-          {/* {JSON.stringify(formik.values)} */}
-          <Button color="success" variant="contained" type="submit">
-            Готово
-          </Button>
-          <Button color="error"  variant="contained" type="reset" onClick={(e)=>{formik.resetForm();handleClear() }}>
-            Очистить
-          </Button>
-          {Object.keys(formik.errors).map((el, i) => {
-            return (
-              <div className="error MuiFormHelperText-root Mui-error MuiFormHelperText-sizeSmall MuiFormHelperText-contained css-k4qjio-MuiFormHelperText-root">
-                {formik.errors[el]}
-              </div>
-            );
-          }) || <></>}
         </Box>
-      </form>
-    </div>
+        {/* {JSON.stringify(formik.values)} */}
+        <MainButton title="Готово" type="submit" />
+        <MainButton
+          title="Очистить"
+          type="reset"
+          bg="#E83100"
+          hoverbg="#FF6933"
+          onClick={(e) => {
+            formik.resetForm();
+            handleClear();
+          }}
+        />
+        {Object.keys(formik.errors).map((el, i) => {
+          return (
+            <div className="error MuiFormHelperText-root Mui-error MuiFormHelperText-sizeSmall MuiFormHelperText-contained css-k4qjio-MuiFormHelperText-root">
+              {formik.errors[el]}
+            </div>
+          );
+        }) || <></>}
+      </Box>
+    </form>
   );
 }
 

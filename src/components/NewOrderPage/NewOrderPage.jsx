@@ -1,11 +1,11 @@
 import {
   Box,
-  Button,
   Typography,
   StepContent,
   Stepper,
   StepLabel,
   Step,
+  Container,
 } from "@mui/material";
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
@@ -13,10 +13,12 @@ import { setCurrentCustomer } from "../../reducers/appReducer";
 import { FormEvent } from "./FormEvent";
 import FormRoute from "./FormRoute";
 import ResultBlock from "./ResultBlock";
-import ArrowBackIcon from '@mui/icons-material/ArrowBack';
+import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import { useNavigate } from "react-router-dom";
+import MainButton from "../Buttons/MainButton";
+
 function NewOrderPage() {
-  const navigate = useNavigate()
+  const navigate = useNavigate();
   const dispatch = useDispatch();
   const { currentCustomer, currentOrder } = useSelector(
     (state) => state.speedboat
@@ -40,7 +42,7 @@ function NewOrderPage() {
   };
   const steps = [
     {
-      label: "Маршрут",
+      label: "Маршрут:",
       description: <FormRoute nextStep={handleNext} />,
     },
     {
@@ -49,20 +51,8 @@ function NewOrderPage() {
     },
   ];
   return (
-    <Box sx={{position:'relative'}}>
-      <Box
-        sx={{
-          display:'flex',
-          alignItems:'center',
-          p:1
-        }}
-        onClick={()=>navigate(-1)}
-      >
-      {/* <ArrowBackIcon fontSize="small"/>  */}
-      <Typography variant="caption">
-        Вернуться на страницу агента
-      </Typography>
-      </Box>
+    <Container maxWidth="sm" sx={{ position: "relative", mt: 2 }}>
+      <MainButton title="Назад" onClick={() => navigate(-1)} />
       <Stepper activeStep={activeStep} orientation="vertical">
         {steps.map((step, index) => (
           <Step key={step.label}>
@@ -70,7 +60,7 @@ function NewOrderPage() {
               optional={
                 index === 1 ? (
                   <Typography variant="caption">
-                    подтверждение заказа
+                    Подтверждение заказа:
                   </Typography>
                 ) : null
               }
@@ -80,13 +70,16 @@ function NewOrderPage() {
             <StepContent>
               <Box sx={{ mb: 2 }}>
                 {step.description}
-                <div>
+                <Box sx={{ mt: 2 }}>
                   {index !== 0 && (
-                    <Button onClick={handleBack} sx={{ mt: 1 }} variant="contained" color="error">
-                      Изменить заказ
-                    </Button>
+                    <MainButton
+                      title="Изменить заказ"
+                      onClick={handleBack}
+                      bg="#E83100"
+                      hoverbg="#FF6933"
+                    />
                   )}
-                </div>
+                </Box>
               </Box>
             </StepContent>
           </Step>
@@ -99,7 +92,7 @@ function NewOrderPage() {
           handleReset={handleReset}
         />
       )}
-    </Box>
+    </Container>
   );
 }
 

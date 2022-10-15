@@ -6,6 +6,8 @@ export const customers = [
     date: "01.01.2021",
     route: "Валаам",
     desc: "Хочет черную тачку и пять арбузов",
+    spots: 3,
+    is_paid: true,
   },
   {
     id: 1,
@@ -14,6 +16,8 @@ export const customers = [
     date: "11.08.2022",
     route: "Шхеры",
     desc: "Может съехать",
+    spots: 3,
+    is_paid: true,
   },
   {
     id: 2,
@@ -22,5 +26,7 @@ export const customers = [
     date: "12.11.2021",
     route: "Валаам+Шхеры",
     desc: "Куча бабок, но е№#т мозги",
+    spots: 3,
+    is_paid: false,
   },
 ];

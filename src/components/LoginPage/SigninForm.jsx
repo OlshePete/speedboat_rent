@@ -1,9 +1,10 @@
-import { Box, Button, TextField } from "@mui/material";
+import { Box, Button, Container, TextField } from "@mui/material";
 import { useFormik } from "formik";
 import React from "react";
 import * as yup from "yup";
 import { useDispatch } from "react-redux";
 import { authSignIn } from "../../reducers/appReducer";
+import MainButton from "../Buttons/MainButton";
 
 const validationSchema = yup.object({
   login: yup.string("Введите имя пользователя").required("Обязательное поле"),
@@ -20,14 +21,15 @@ function SigninForm() {
       login: "",
       password: "",
     },
-    validationSchema:validationSchema,
+    validationSchema: validationSchema,
     onSubmit: (values) => {
       dispatch(authSignIn(values));
     },
   });
-console.log(formik.errors);
+  console.log(formik.errors);
   return (
-    <Box
+    <Container
+      maxWidth="sm"
       sx={{
         "& form": {
           display: "flex",
@@ -40,33 +42,31 @@ console.log(formik.errors);
     >
       <form onSubmit={formik.handleSubmit}>
         <TextField
-          fullWidth={false}
           required
           id="login"
           name="login"
-          label="login"
+          label="Введите данные для авторизации"
           value={formik.values.login}
           onChange={formik.handleChange}
           error={formik.touched.login && Boolean(formik.errors.login)}
           helperText={formik.touched.login && formik.errors.login}
+          size="small"
         />
         <TextField
-          fullWidth={false}
           required
           id="password"
           name="password"
-          label="Password"
+          label="Введите пароль"
           type="password"
           value={formik.values.password}
           onChange={formik.handleChange}
           error={formik.touched.password && Boolean(formik.errors.password)}
           helperText={formik.touched.password && formik.errors.password}
+          size="small"
         />
-        <Button onClick={() => {}} type="submit" variant="outlined">
-          Login
-        </Button>
+        <MainButton title="Войти" type="submit" color="#469597" />
       </form>
-    </Box>
+    </Container>
   );
 }
 

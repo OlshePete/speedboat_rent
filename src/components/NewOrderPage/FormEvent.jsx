@@ -1,6 +1,7 @@
 import { Box, Button, Collapse, TextField } from "@mui/material";
 import { MuiTelInput, matchIsValidTel } from "mui-tel-input";
 import { useEffect, useRef, useState } from "react";
+import MainButton from "../Buttons/MainButton";
 
 const FormEvent = ({ handleClickSubmit }) => {
   const codeButtonRef = useRef(null);
@@ -24,41 +25,41 @@ const FormEvent = ({ handleClickSubmit }) => {
     }
   };
   async function getAllCustomers() {
-    const response = await fetch(`data/all`);
+    const response = await fetch(`/data/all`);
     const res = await response.json();
     return res;
   }
   async function getOneCustomer() {
-    const response = await fetch(`data/one/${info.numberValue}`);
+    const response = await fetch(`/data/one/${info.numberValue}`);
     const res = await response.json();
     return res;
   }
   async function newCustomer(body) {
-   const response = await fetch(`data/create`, {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify(body)
-        })
+    const response = await fetch(`/data/create`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(body),
+    });
     const res = await response.json();
-    console.log("Customer already registered. user_id: ",res);
+    console.log("Customer already registered. user_id: ", res);
     return res;
   }
   const handleButtonSubmit = () => {
     setCheck(!check);
-    checkOrCreateCustomer()
+    checkOrCreateCustomer();
     console.log(`Отправили смс на номер ${phone}, код: 1234`);
     //  handleClickSubmit(phone, name, info)
   };
   const checkOrCreateCustomer = async () => {
     const tryFind = await getOneCustomer();
-    if (tryFind && tryFind.length>0) {
-      console.log("Customer already registered. user_id: ",tryFind[0].user_id);
+    if (tryFind && tryFind.length > 0) {
+      console.log("Customer already registered. user_id: ", tryFind[0].user_id);
     } else {
       const newId = await newCustomer({
-        "user_name": name || "не указано",
-        "user_phone": info.numberValue,
-        "order_id": 0
-      })
+        user_name: name || "не указано",
+        user_phone: info.numberValue,
+        order_id: 0,
+      });
     }
   };
   return (
@@ -66,7 +67,7 @@ const FormEvent = ({ handleClickSubmit }) => {
       sx={{
         display: "flex",
         flexDirection: "column",
-        gap: 1,
+        gap: 2,
       }}
     >
       {/* <Button variant="contained" size="small" onClick={testOnClick}>
@@ -77,42 +78,42 @@ const FormEvent = ({ handleClickSubmit }) => {
         type="text"
         value={name}
         onChange={(e) => setName(e.target.value)}
-        placeholder="customer name"
+        label="Введите имя"
+        placeholder="Введите имя"
+        size="small"
       />
       <MuiTelInput
         disabled={check}
         defaultCountry="RU"
         // onlyCountries={['RU']}
-        label="номер телефона"
+        label="Введите номер мобильного телефона"
         value={phone}
         onChange={handleChangePhone}
+        size="small"
       />
       <Collapse in={check} timeout="auto" unmountOnExit>
         <TextField
+          fullWidth
           inputRef={codeButtonRef}
-          type="number"
           value={code}
           onChange={(e) => setCode(e.target.value)}
           placeholder="Код из СМС"
+          size="small"
+          sx={{ mb: 2 }}
         />
-        <Button
-          variant="contained"
-           color="success" 
-          disabled={code !== "1234"}
+        <MainButton
+          title="Отправить"
           onClick={() => handleClickSubmit(phone, name, info)}
-        >
-          Отправить заказ
-        </Button>
+          disabled={code !== "1234"}
+        />
       </Collapse>
       <Collapse in={!check} timeout="auto" unmountOnExit>
-        <Button
-          variant="contained"
-           color="success" 
+        <MainButton
           disabled={!matchIsValidTel(phone)}
+          title="Отправить код"
+          type="submit"
           onClick={handleButtonSubmit}
-        >
-          Отправить код
-        </Button>
+        />
       </Collapse>
     </Box>
   );
