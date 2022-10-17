@@ -93,18 +93,26 @@ function FormRoute({ nextStep = () => {} }) {
             value={formik.values.spots}
           />
         </Box>
-        {/* {JSON.stringify(formik.values)} */}
+        <Box
+        sx={{
+          display:"flex",
+          gap:2,
+          height:'20px'
+        }}
+        >
         <MainButton title="Готово" type="submit" />
         <MainButton
           title="Очистить"
           type="reset"
           bg="#E83100"
           hoverbg="#FF6933"
-          onClick={(e) => {
-            formik.resetForm();
-            handleClear();
-          }}
+          // onClick={(e) => {
+          //   formik.resetForm();
+          //   handleClear();
+          // }}
         />
+
+        </Box>
         {Object.keys(formik.errors).map((el, i) => {
           return (
             <div className="error MuiFormHelperText-root Mui-error MuiFormHelperText-sizeSmall MuiFormHelperText-contained css-k4qjio-MuiFormHelperText-root">

@@ -6,6 +6,7 @@ import MainButton from "../Buttons/MainButton";
 const FormEvent = ({ handleClickSubmit }) => {
   const codeButtonRef = useRef(null);
   const [phone, setPhone] = useState("");
+  const [user_id, setUser_id] = useState(null);
   const [name, setName] = useState("");
   const [info, setInfo] = useState(null);
   const [check, setCheck] = useState(false);
@@ -35,7 +36,7 @@ const FormEvent = ({ handleClickSubmit }) => {
     return res;
   }
   async function newCustomer(body) {
-    const response = await fetch(`/data/create`, {
+    const response = await fetch(`/data/create-user`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(body),
@@ -52,14 +53,16 @@ const FormEvent = ({ handleClickSubmit }) => {
   };
   const checkOrCreateCustomer = async () => {
     const tryFind = await getOneCustomer();
-    if (tryFind && tryFind.length > 0) {
+    if (tryFind && tryFind.length > 0 && !tryFind.error) {
+      setUser_id(tryFind[0].user_id)
       console.log("Customer already registered. user_id: ", tryFind[0].user_id);
     } else {
       const newId = await newCustomer({
         user_name: name || "не указано",
         user_phone: info.numberValue,
         order_id: 0,
-      });
+      });      
+      setUser_id(newId)
     }
   };
   return (
@@ -103,7 +106,7 @@ const FormEvent = ({ handleClickSubmit }) => {
         />
         <MainButton
           title="Отправить"
-          onClick={() => handleClickSubmit(phone, name, info)}
+          onClick={() => handleClickSubmit(user_id)}
           disabled={code !== "1234"}
         />
       </Collapse>

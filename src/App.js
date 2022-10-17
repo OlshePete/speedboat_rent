@@ -18,6 +18,12 @@ const theme = createTheme({
   },
   typography: {
     fontFamily: ["Roboto", '"Helvetica Neue"', "Arial", "sans-serif"].join(","),
+    block_title:{
+      lineHeight: '150%',
+      fontSize: "20px",
+      fontWeight: 700,
+      opacity: 1,
+    },
     caption: {
       lineHeight: 0,
       fontSize: "12px",

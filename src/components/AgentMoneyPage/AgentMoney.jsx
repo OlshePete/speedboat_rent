@@ -12,7 +12,7 @@ function a11yProps(index) {
 }
 function AgentMoney({ theme }) {
     const [value, setValue] = React.useState(3);
-
+console.log(value);
   const handleChange = (event, newValue) => {
     setValue(newValue);
   };
