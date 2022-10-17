@@ -18,8 +18,7 @@ const getLabel = (index) => {
       return null;
   }
 };
-function SummaryPanel(props) {
-  const { children, value, index, theme, ...other } = props;
+function SummaryPanel({ children, value, index, ...other }) {
   console.log(index);
   const labelArr = getLabel(index);
   return (
