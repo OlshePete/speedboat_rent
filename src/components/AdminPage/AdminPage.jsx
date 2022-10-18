@@ -6,10 +6,42 @@ import CustomerList from "../CheckPage/CustomerList";
 import AgentsList from "./AgentsList";
 import NewOrderPage from "../NewOrderPage/NewOrderPage";
 import NewAgentWrapper from "../NewAgentWrapper/NewAgentWrapper";
+import NavPanel from "../NavPanel/NavPanel";
 
 function AdminDashboard() {
   const [current, setCurrent] = useState(null);
   const [data, setData] = useState(null);
+
+  const navData = [
+    {
+      title: "новый агент",
+      id: "new-agent",
+      onClick: (e) => {
+        setCurrent(e.target.id);
+      },
+    },
+    {
+      title: "новый заказ",
+      id: "new-order",
+      onClick: (e) => {
+        setCurrent(e.target.id);
+      },
+    },
+    {
+      title: "Список агентов",
+      id: "agent-list",
+      onClick: (e) => {
+        setCurrent(e.target.id);
+      },
+    },
+    {
+      title: "Список заказов",
+      id: "order-list",
+      onClick: (e) => {
+        setCurrent(e.target.id);
+      },
+    },
+  ];
 
   async function getAllAgents() {
     const response = await fetch(`/data/all-agents`);
@@ -48,7 +80,7 @@ function AdminDashboard() {
   const switchCurrentWrapper = (current) => {
     switch (current) {
       case "new-agent":
-        return <NewAgentWrapper/>;
+        return <NewAgentWrapper />;
       case "new-order":
         return <NewOrderPage />;
       case "agent-list":
@@ -86,30 +118,7 @@ function AdminDashboard() {
           gap: 1,
         }}
       >
-        <ButtonGroup sx={{ width: "100%", gap: 1 }} orientation="horizontal">
-          <MainButton
-            title="Новый агент"
-            id="new-agent"
-            onClick={handleChangeCurrent}
-          />
-          <MainButton
-            title="Новый заказ"
-            id="new-order"
-            onClick={handleChangeCurrent}
-          />
-        </ButtonGroup>{" "}
-        <ButtonGroup sx={{ width: "100%", gap: 1 }} orientation="horizontal">
-          <MainButton
-            title="Список агентов"
-            id="agent-list"
-            onClick={handleChangeCurrent}
-          />
-          <MainButton
-            title="Список заказов"
-            id="order-list"
-            onClick={handleChangeCurrent}
-          />
-        </ButtonGroup>
+        <NavPanel navData={navData} />
       </Box>
       <Box sx={{ minHeight: "300px", flexGrow: 1, overflowY: "scroll" }}>
         {switchCurrentWrapper(current)}
