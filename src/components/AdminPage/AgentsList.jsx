@@ -2,20 +2,21 @@ import * as React from "react";
 import Typography from "@mui/material/Typography";
 import { Box, Card } from "@mui/material";
 
-export default function AgentsList(props) {
+export default function AgentsList({ agents }) {
   return (
     <Box
       sx={{
-        width: "100%",
+        display: "flex",
+        flexDirection: "column",
+        p: "4px",
       }}
     >
-      {props.agents &&
-        props.agents.map((el, i) => (
+      {agents &&
+        [...agents].map((agent, index) => (
           <Card
-            key={"checkcustomer_card" + i}
+            key={"checkcustomer_card" + index}
             sx={{
               position: "relative",
-              width: "100%",
               display: "flex",
               flexDirection: "row",
               flexWrap: "wrap",
@@ -52,10 +53,10 @@ export default function AgentsList(props) {
                   }}
                 >
                   <Typography variant="customer_name">
-                    Имя: {el.name}
+                    Имя: {agent.agent_name}
                   </Typography>
                   <Typography variant="customer_phone">
-                    Номер: {el.phone}
+                    Номер: {agent.agent_phone}
                   </Typography>
                 </Box>
                 <Box
@@ -70,10 +71,11 @@ export default function AgentsList(props) {
                   }}
                 >
                   <Typography variant="spots">
-                    Заработано: {el.agentMoney}
+                    Всего заказов/билетов: {agent.total_orders}/
+                    {agent.total_ticket}
                   </Typography>
                   <Typography variant="timespot">
-                    Дата регистрации: {el.registrationDate}
+                    Дата последней продажи: {agent.last_sale}
                   </Typography>
                 </Box>
               </Box>

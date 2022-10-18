@@ -31,6 +31,7 @@ const initialState = {
   userRole: null, //admin, manager, agent
   userLogin: null,
   userName: null,
+  addedOrderList:[],
   currentOrder: {
     route: "",
     date: "",
@@ -74,6 +75,9 @@ export const speedboatSlice = createSlice({
         ...action.payload,
       };
     },
+    updateAddedList: (state, action) => {
+      state.addedOrderList=[...state.addedOrderList,action.payload]
+    }
   },
   extraReducers: {
     [authSignIn.pending]: (state, action) => {
@@ -92,7 +96,7 @@ export const speedboatSlice = createSlice({
 
 });
 
-export const { setUserName, setCurrentOrder, setCurrentCustomer,setToken } =
+export const { setUserName, setCurrentOrder, setCurrentCustomer,setToken, updateAddedList } =
   speedboatSlice.actions;
 
 export default speedboatSlice.reducer;

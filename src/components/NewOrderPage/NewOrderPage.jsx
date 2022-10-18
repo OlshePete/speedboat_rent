@@ -9,18 +9,26 @@ import {
 } from "@mui/material";
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { setCurrentCustomer } from "../../reducers/appReducer";
+import { setCurrentCustomer, updateAddedList } from "../../reducers/appReducer";
 import { FormEvent } from "./FormEvent";
 import FormRoute from "./FormRoute";
 import ResultBlock from "./ResultBlock";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 import { useNavigate } from "react-router-dom";
 import MainButton from "../Buttons/MainButton";
+import { now } from "moment-timezone";
 
 function NewOrderPage() {
+  const now = new Date();
+  const dateOptions = {
+    day: "numeric",
+    month: "numeric",
+    year: "numeric",
+  };
+  const DateNow = new Intl.DateTimeFormat("ru", dateOptions);
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  const { currentCustomer, currentOrder } = useSelector(
+  const { currentCustomer, currentOrder, userRole,id } = useSelector(
     (state) => state.speedboat
   );
   const [activeStep, setActiveStep] = useState(0);
@@ -36,8 +44,54 @@ function NewOrderPage() {
   const handleReset = () => {
     setActiveStep(0);
   };
-  const handleClickSubmit = (phone, name, info) => {
-    dispatch(setCurrentCustomer({ phone: phone, name: name, info: info }));
+  
+  async function newOrder(body) {
+    const response = await fetch(`/data/create-order`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(body),
+    });
+    const res = await response.json();
+    return res;
+  }
+  const getRouteId = (route_name) =>{
+    switch (route_name) {
+      case "Multi":
+        return 3
+      case "Shkhery":
+        return 2
+      case "Valaam":
+        return 1
+      default:
+        break;
+    }
+  }
+  const getTimeSpot = (timespot) =>{
+    switch (timespot) {
+      case 1:
+        return "09:00:00"
+      case 2:
+        return "12:00:00"
+      case 3:
+        return "15:00:00"
+      case 4:
+        return "18:00:00"
+      default:
+        break;
+    }
+  }
+  const handleClickSubmit = async (user_id) => {
+    const body = {
+      "order_date": now.toISOString().split('T')[0],
+      "order_event_date": currentOrder.date+" "+getTimeSpot(currentOrder.timespot),
+      "route_id": getRouteId(currentOrder.route),
+      "user_id": user_id,
+      "total_persons": currentOrder.spots,
+      "agent_id": id,
+      "is_paid": false,
+      "is_exec": false
+    }
+    await dispatch(updateAddedList(newOrder(body)))
     handleNext();
   };
   const steps = [
@@ -52,7 +106,9 @@ function NewOrderPage() {
   ];
   return (
     <Container maxWidth="sm" sx={{ position: "relative", mt: 2 }}>
-      <MainButton title="Назад" onClick={() => navigate(-1)} />
+      {
+        userRole !== "admin" && <MainButton title="Назад" onClick={() => navigate(-1)} />
+      }
       <Stepper activeStep={activeStep} orientation="vertical">
         {steps.map((step, index) => (
           <Step key={step.label}>

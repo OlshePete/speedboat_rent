@@ -1,13 +1,29 @@
 import { Box, Button, ButtonGroup, Paper } from "@mui/material";
-import React from "react";
+import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import MainButton from "../Buttons/MainButton";
+import NavPanel from "../NavPanel/NavPanel";
 
 function AgentPage() {
-  const navigate = useNavigate();
-  const handleClick = (event) => {
-    navigate(event.target.id);
-  };
+  const [current, setCurrent] = useState(null);
+
+  const navData = [
+    {
+      title: "Новый заказ",
+      id: "new-order",
+      onClick: (e) => {
+        setCurrent(e.target.id);
+      },
+    },
+    {
+      title: "Найти заказ",
+      id: "check-customer",
+      onClick: (e) => {
+        setCurrent(e.target.id);
+      },
+    },
+  ];
+
   return (
     <Box
       sx={{
@@ -21,6 +37,8 @@ function AgentPage() {
         width: "100%",
       }}
     >
+      <NavPanel navData={navData} />
+
       <ButtonGroup
         fullWidth
         sx={{

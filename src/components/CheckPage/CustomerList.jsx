@@ -2,13 +2,13 @@ import * as React from "react";
 import Typography from "@mui/material/Typography";
 import { Box, Card } from "@mui/material";
 
-export default function CustomerList(props) {
+export default function CustomerList({orders}) {
   return (
     <Box sx={{}}>
-      {props.customers &&
-        props.customers.map((el, i) => (
+      {orders &&
+        orders.map((order, index) => (
           <Card
-            key={"checkcustomer_card" + i}
+            key={"order-list-card" + index}
             sx={{
               position: "relative",
               display: "flex",
@@ -46,12 +46,12 @@ export default function CustomerList(props) {
                     alignItems: { md: "flex-start", xs: "left" },
                   }}
                 >
-                  <Typography variant="route">Маршрут: {el.route}</Typography>
+                  <Typography variant="route">Маршрут: {order.route_name}</Typography>
                   <Typography variant="customer_name">
-                    Имя: {el.name}
+                    Имя: {order.user_name}
                   </Typography>
                   <Typography variant="customer_phone">
-                    Номер: {el.phone}
+                    Номер: {order.user_phone}
                   </Typography>
                 </Box>
                 <Box
@@ -65,17 +65,17 @@ export default function CustomerList(props) {
                     mt: { xs: 1, sm: 0 },
                   }}
                 >
-                  <Typography variant="timespot">Дата: {el.date}</Typography>
+                  <Typography variant="timespot">Дата: {order.order_date}</Typography>
                   <Typography variant="spots">
-                    Кол-во билетов: {el.spots}
+                    Кол-во билетов: {order.total_persons}
                   </Typography>
                   <Typography
                     variant="is_paid"
                     sx={{
-                      color: !el.is_paid ? "#dbba2d" : "#99ce65",
+                      color: !order.is_paid ? "#dbba2d" : "#99ce65",
                     }}
                   >
-                    {el.is_paid ? "Оплачен" : "Ожидает оплаты"}
+                    {order.is_paid ? "Оплачен" : "Ожидает оплаты"}
                   </Typography>
                 </Box>
               </Box>
