@@ -15,7 +15,7 @@ function NavButton({ title, id, onClick, logo }) {
       sx={{
         mx: 0.5,
         my: 0.9,
-        fontSize: 14,
+        fontSize: { xs: 12, sm: 14 },
         lineHeight: "90%",
         minHeight: 40,
         bgcolor: "#469597",

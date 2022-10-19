@@ -1,7 +1,6 @@
-import { Box, ButtonGroup, Container, Typography } from "@mui/material";
+import { Box, Container, Typography } from "@mui/material";
 import React, { useEffect } from "react";
 import { useState } from "react";
-import MainButton from "../Buttons/MainButton";
 import CustomerList from "../CheckPage/CustomerList";
 import AgentsList from "./AgentsList";
 import NewOrderPage from "../NewOrderPage/NewOrderPage";
@@ -73,9 +72,9 @@ function AdminDashboard() {
     }
   }, [current]);
 
-  const handleChangeCurrent = (event) => {
-    setCurrent(event.target.id);
-  };
+  // const handleChangeCurrent = (event) => {
+  //   setCurrent(event.target.id);
+  // };
 
   const switchCurrentWrapper = (current) => {
     switch (current) {

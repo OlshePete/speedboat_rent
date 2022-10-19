@@ -26,6 +26,7 @@ function MainButton({
       type={type}
       fullWidth
       sx={{
+        borderRadius: 0,
         fontSize: fz || { xs: 14, sm: 18 },
         lineHeight: "100%",
         minHeight: "50px",

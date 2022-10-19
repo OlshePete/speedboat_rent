@@ -1,10 +1,10 @@
-import { Box, ButtonGroup } from "@mui/material";
-import React, { useState } from "react";
-import MainButton from "../Buttons/MainButton";
+import { Box } from "@mui/material";
+import React from "react"; //  { useState }
+
 import NavPanel from "../NavPanel/NavPanel";
 
 function AgentPage() {
-  const [current, setCurrent] = useState(null);
+  // const [current, setCurrent] = useState(null);
 
   const navData = [
     {
@@ -20,13 +20,11 @@ function AgentPage() {
   return (
     <Box
       sx={{
-        mt: 2,
         display: "flex",
         flexDirection: "row",
         flexWrap: "wrap",
         alignItems: "center",
         justifyContent: "space-between",
-        gap: 1,
         width: "100%",
       }}
     >
