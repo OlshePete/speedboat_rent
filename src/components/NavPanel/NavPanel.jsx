@@ -9,12 +9,10 @@ function NavPanel({ navData }) {
       sx={{
         bgcolor: "#BBC6C8",
         width: "100%",
-        minHeight: "60px",
         display: "flex",
         flexDirection: "row",
-        justifyContent: "space-around",
+        justifyContent: "center",
         alignItems: "center",
-        flexWrap: "wrap",
       }}
     >
       {navigationData &&

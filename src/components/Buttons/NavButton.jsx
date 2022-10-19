@@ -2,8 +2,8 @@ import { Button } from "@mui/material";
 import React from "react";
 import { useNavigate } from "react-router-dom";
 
-function NavButton({ title, id, onClick, logo, key, i, ...other }) {
-  const navigate = useNavigate;
+function NavButton({ title, id, onClick, logo }) {
+  const navigate = useNavigate();
   const handleClick = (event) => {
     navigate(event.target.id);
   };
@@ -11,12 +11,13 @@ function NavButton({ title, id, onClick, logo, key, i, ...other }) {
     <Button
       id={id}
       onClick={onClick || handleClick}
+      fullWidth
       sx={{
-        m: 1,
-        fontSize: 12,
-        lineHeight: "130%",
-        height: 52,
-        maxWidth: "20%",
+        mx: 0.5,
+        my: 0.9,
+        fontSize: 14,
+        lineHeight: "90%",
+        minHeight: 40,
         bgcolor: "#469597",
         color: "#efeeb6",
         textTransform: "uppercase",
