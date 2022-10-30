@@ -1,4 +1,4 @@
-import { Box, Container } from "@mui/material";
+import { Container } from "@mui/material";
 import React from "react";
 import { useSelector } from "react-redux";
 import AdminPage from "../AdminPage/AdminPage";
@@ -13,7 +13,6 @@ const AgentDashboard = () => {
         display: "flex",
         flexDirection: "column",
         justifyContent: "stretch",
-        gap: 1,
       }}
     >
       <AgentPage />
@@ -30,8 +29,6 @@ const AdminDashboard = () => {
         display: "flex",
         flexDirection: "column",
         justifyContent: "stretch",
-        gap: 1,
-        mt: 2,
       }}
     >
       <AdminPage />

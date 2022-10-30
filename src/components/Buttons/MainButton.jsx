@@ -1,8 +1,20 @@
-import { Button, Typography } from "@mui/material";
+import { Button } from "@mui/material";
 import React from "react";
 import { useNavigate } from "react-router-dom";
 
-function MainButton(props) {
+function MainButton({
+  disabled,
+  type,
+  fz,
+  height,
+  width,
+  bg,
+  color,
+  hoverbg,
+  id,
+  onClick,
+  title,
+}) {
   const navigate = useNavigate();
   const handleClick = (event) => {
     navigate(event.target.id);
@@ -10,29 +22,30 @@ function MainButton(props) {
 
   return (
     <Button
-      disabled={props.disabled}
-      type={props.type}
+      disabled={disabled}
+      type={type}
       fullWidth
       sx={{
-        fontSize: props.fz || { xs: 14, sm: 18 },
+        borderRadius: 0,
+        fontSize: fz || { xs: 14, sm: 18 },
         lineHeight: "100%",
         minHeight: "50px",
-        height: props.height,
-        width: props.width,
-        bgcolor: props.bg || "#469597",
-        color: props.color || "#efeeb6",
+        height: height,
+        width: width,
+        bgcolor: bg || "#469597",
+        color: color || "#efeeb6",
         textTransform: "uppercase",
         fontWeight: 600,
         ":hover": {
           border: "none",
-          bgcolor: props.hoverbg || "#5BA199",
+          bgcolor: hoverbg || "#5BA199",
           color: "#efeeb6",
         },
       }}
-      id={props.id}
-      onClick={props.onClick || handleClick}
+      id={id}
+      onClick={onClick || handleClick}
     >
-      {props.title}
+      {title}
     </Button>
   );
 }
