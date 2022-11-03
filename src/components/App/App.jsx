@@ -1,12 +1,12 @@
 import { createTheme, ThemeProvider } from "@mui/material";
 import { Route, Routes } from "react-router-dom";
 import "./App.css";
-import CheckPage from "./components/CheckPage/CheckPage";
-import LoginPage from "./components/LoginPage/LoginPage";
-import MainOutlet from "./components/MainOutlet/MainOutlet";
-import NewOrderPage from "./components/NewOrderPage/NewOrderPage";
-import DashboardPage from "./components/pages/DashboardPage";
-import PrivateRoute from "./hoc/PrivateRoute";
+import CheckPage from "../CheckPage/CheckPage";
+import LoginPage from "../LoginPage/LoginPage";
+import MainOutlet from "../MainOutlet/MainOutlet";
+import NewOrderPage from "../NewOrderPage/NewOrderPage";
+import DashboardPage from "../pages/DashboardPage";
+import PrivateRoute from "../../hoc/PrivateRoute";
 
 const theme = createTheme({
   palette: {
