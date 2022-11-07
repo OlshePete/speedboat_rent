@@ -1,8 +1,10 @@
 import { Box } from "@mui/material";
-import React from "react";
+import React, { useState } from "react";
 import NavButton from "../Buttons/NavButton";
 
 function NavPanel({ navData }) {
+  const [navigation, setNavigation] = useState(navData);
+
   return (
     <Box
       sx={{
@@ -14,8 +16,8 @@ function NavPanel({ navData }) {
         alignItems: "center",
       }}
     >
-      {navData &&
-        navData.map((el, i) => (
+      {navigation &&
+        navigation.map((el, i) => (
           <NavButton key={i} title={el.title} id={el.id} onClick={el.onClick} />
         ))}
     </Box>

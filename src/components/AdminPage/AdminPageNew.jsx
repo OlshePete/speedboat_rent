@@ -5,8 +5,9 @@ import CustomerList from "../CheckPage/CustomerList";
 import AgentsList from "./AgentsList";
 import NewOrderPage from "../NewOrderPage/NewOrderPage";
 import NewAgentWrapper from "../NewAgentWrapper/NewAgentWrapper";
-import NavPanel from "../NavPanel/NavPanel";
 import InfoPage from "../InfoPage/InfoPage";
+
+import NavPanel from "../NavPanel/NavPanel";
 
 function AdminDashboard() {
   const [current, setCurrent] = useState(null);
@@ -41,42 +42,22 @@ function AdminDashboard() {
         setCurrent(e.target.id);
       },
     },
+    {
+      title: "Список клиентов",
+      id: "client-list",
+      onClick: (e) => {
+        setCurrent(e.target.id);
+      },
+    },
   ];
 
-  async function getAllAgents() {
-    const response = await fetch(`/data/all-users`);
-    const res = await response.json();
-    return res;
-  }
+  // async function getAllAgents() {
+  //   const response = await fetch(`/data/all-users`);
+  //   const res = await response.json();
+  //   return res;
+  // }
 
-  async function getAllOrders() {
-    const response = await fetch(`/data/all-orders`);
-    const res = await response.json();
-    return res;
-  }
-  const fetchData = async (setData, func) => {
-    const data = await func();
-    setData([...data]);
-  };
-  function checklist(current, string = "") {
-    return current.indexOf(string) !== -1;
-  }
-  useEffect(() => {
-    if (current) {
-      if (checklist(current, "-list")) {
-        if (current.indexOf("agent") !== -1) {
-          fetchData(setData, getAllAgents);
-        }
-        if (current.indexOf("order") !== -1) {
-          fetchData(setData, getAllOrders);
-        }
-      }
-    }
-  }, [current]);
-
-  // const handleChangeCurrent = (event) => {
-  //   setCurrent(event.target.id);
-  // };
+  useEffect(() => {}, []);
 
   const switchCurrentWrapper = (current) => {
     switch (current) {
@@ -102,6 +83,16 @@ function AdminDashboard() {
             <CustomerList orders={data} />
           </Box>
         );
+      case "client-list":
+        return (
+          <Box>
+            <Typography sx={{}} variant="block_title" textAlign="center">
+              Клиенты
+            </Typography>
+            <CustomerList orders={data} />
+          </Box>
+        );
+
       default:
         return (
           <Box>

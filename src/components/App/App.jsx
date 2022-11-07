@@ -7,6 +7,7 @@ import MainOutlet from "../MainOutlet/MainOutlet";
 import NewOrderPage from "../NewOrderPage/NewOrderPage";
 import DashboardPage from "../pages/DashboardPage";
 import PrivateRoute from "../../hoc/PrivateRoute";
+import InfoPage from "../InfoPage/InfoPage";
 
 const theme = createTheme({
   palette: {
@@ -205,7 +206,14 @@ function App() {
               </PrivateRoute>
             }
           />
-
+          <Route
+            path="info-page"
+            element={
+              <PrivateRoute>
+                <InfoPage />
+              </PrivateRoute>
+            }
+          />
           {/* <Route exac path="/agent" element={<AgentPage />} />
         <Route exac path="/agent-money" element={<AgentMoney />} /> */}
         </Route>

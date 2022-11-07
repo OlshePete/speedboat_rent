@@ -2,6 +2,7 @@ import { Container } from "@mui/material";
 import React from "react";
 import { useSelector } from "react-redux";
 import AdminPage from "../AdminPage/AdminPage";
+import AdminPageNew from "../AdminPage/AdminPageNew";
 import AgentMoney from "../AgentMoneyPage/AgentMoney";
 import AgentPage from "../AgentPage/AgentPage";
 
@@ -31,7 +32,7 @@ const AdminDashboard = () => {
         justifyContent: "stretch",
       }}
     >
-      <AdminPage />
+      <AdminPageNew />
     </Container>
   );
 };

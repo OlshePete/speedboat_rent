@@ -2,6 +2,8 @@ import { AppBar, Box, Container, Toolbar, Typography } from "@mui/material";
 import React from "react";
 import Clock from "react-live-clock";
 import { useSelector } from "react-redux";
+import HomeButton from "../Buttons/HomeButton";
+import InfoButton from "../Buttons/InfoButton";
 
 function HeaderBar() {
   const now = new Date();
@@ -44,10 +46,20 @@ function HeaderBar() {
               {userLogin} <br /> {getRoleString()}
             </Typography>
           </Box>
-          <Typography sx={style.text}>
-            {DateNow.format(now)} <br />
-            <Clock format={"HH:mm:ss"} ticking={true} />
-          </Typography>
+          <Box
+            sx={{
+              display: "flex",
+              flexDirection: "row",
+              flexWrap: "nowrap",
+            }}
+          >
+            <HomeButton />
+            <InfoButton />
+            <Typography sx={style.text}>
+              {DateNow.format(now)} <br />
+              <Clock format={"HH:mm:ss"} ticking={true} />
+            </Typography>
+          </Box>
         </Toolbar>
       </Container>
     </AppBar>

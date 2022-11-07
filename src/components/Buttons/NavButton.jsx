@@ -11,7 +11,6 @@ function NavButton({ title, id, onClick, logo }) {
     <Button
       id={id}
       onClick={onClick || handleClick}
-      fullWidth
       sx={{
         mx: 0.5,
         my: 0.9,
